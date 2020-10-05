@@ -46,7 +46,101 @@
 </head>
 <body>
     <div id="app">
-        
+        <header class="header" style="text-align: center;">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xl-3 col-lg-2">
+                  <div class="header__logo">
+                    <a href="/home"
+                      ><img
+                        src="img/foot_junkies_logo-01.png"
+                        style="width: 25%; margin-right: 30%;"
+                        alt=""
+                    /></a>
+                  </div>
+                </div>
+                <div class="col-xl-6 col-lg-7 mt-3">
+                  <nav class="header__menu">
+                    <ul>
+                      {{-- <li class="active"><a href="/home">Home</a></li> --}}
+                      <li class="{{ Request::is( 'home') ? "active":"" }}"><a href="/home">Home</a></li>
+                      <li class="{{ Request::is( 'mens') ? "active":"" }}"><a href="/mens">Men's</a></li>
+                      <li class="{{ Request::is( 'womens') ? "active":"" }}"><a href="/womens">Women's</a></li>
+                      <li class="{{ Request::is( 'kids') ? "active":"" }}"><a href="/kids">Kid’s</a></li>
+                      <li class="{{ Request::is( 'accesories') ? "active":"" }}"><a href="/accesories">Accessories</a></li>
+                      <li class="{{ Request::is( 'shop') ? "active":"" }}"><a href="/shop">Shop</a></li>
+                      <li>
+                        <a href="#">Pages</a>
+                        <ul class="dropdown">
+                            <li class="{{ Request::is( 'product') ? "active":"" }}">
+                            <a href="/product">Product Details</a>
+                          </li>
+                          <li class="{{ Request::is( 'shop-cart') ? "active":"" }}"><a href="/shop-cart">Shop Cart</a></li>
+                          <li class="{{ Request::is( 'checkout') ? "active":"" }}"><a href="/checkout">Checkout</a></li>
+                          <li class="{{ Request::is( 'orderstracking') ? "active":"" }}"><a href="/orderstracking">Orders Tracking</a></li>
+                        </ul>
+                      </li>
+                      <li class="{{ Request::is( 'about') ? "active":"" }}"><a href="/about">About</a></li>
+                      <li class="{{ Request::is( 'contact') ? "active":"" }}"><a href="/contact">Contact</a></li>
+                    </ul>
+                  </nav>
+                </div>
+                <div class="col-lg-3 mt-3">
+                  <div class="header__right">
+                    <div class="header__right__auth">
+                      <ul class="navbar-nav ml-auto ">
+                          <!-- Authentication Links -->
+                          @guest
+                          <div class="header__right__auth">
+                            <a href="/login-cust">Login / Register</a>
+                          </div>
+
+
+                          @else
+                              <li class="nav-item dropdown">
+                                  <a id="navbarDropdown" class=" dropdown-toggle header__right__auth" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                      {{ Auth::user()->name }} <span class="caret"></span>
+                                  </a>
+
+                                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                      <a class="dropdown-item" href="{{ route('logout') }}"
+                                         onclick="event.preventDefault();
+                                                       document.getElementById('logout-form').submit();">
+                                          {{ __('Logout') }}
+                                      </a>
+
+                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                          @csrf
+                                      </form>
+                                  </div>
+                              </li>
+                          @endguest
+                      </ul>
+                      <!-- <a href="#">Register</a> -->
+                    </div>
+                    <ul class="header__right__widget">
+                      <li><span class="icon_search search-switch"></span></li>
+                      <li>
+                        <a href="/wishlist"
+                          ><span class="icon_heart_alt"></span>
+                          <div class="tip">2</div>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/shop-cart"
+                          ><span class="icon_bag_alt"></span>
+                          <div class="tip">2</div>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="canvas__open">
+                <i class="fa fa-bars"></i>
+              </div>
+            </div>
+          </header>
         {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">

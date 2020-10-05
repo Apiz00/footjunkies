@@ -39,75 +39,7 @@
   </div>
   <!-- Offcanvas Menu End -->
 
-  <!-- Header Section Begin -->
-  <header class="header" style="text-align: center">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-xl-3 col-lg-2">
-          <div class="header__logo">
-            <a href="./index.html"
-              ><img
-                src="img/foot_junkies_logo-01.png"
-                style="width: 25%; margin-right: 30%"
-                alt=""
-            /></a>
-          </div>
-        </div>
-        <div class="col-xl-6 col-lg-7 mt-3">
-          <nav class="header__menu">
-            <ul>
-              <li><a href="./index.html">Home</a></li>
-              <li><a href="./mens.html">Men's</a></li>
-              <li><a href="./womens.html">Women's</a></li>
-              <li><a href="./kids.html">Kid’s</a></li>
-              <li><a href="./accesories.html">Accessories</a></li>
-              <li><a href="./shop.html">Shop</a></li>
-              <li>
-                <a href="#">Pages</a>
-                <ul class="dropdown">
-                  <li>
-                    <a href="./product-details.html">Product Details</a>
-                  </li>
-                  <li><a href="./shop-cart.html">Shop Cart</a></li>
-                  <li><a href="./checkout.html">Checkout</a></li>
-                  <li><a href="./blog-details.html">Orders Tracking</a></li>
-                </ul>
-              </li>
-              <li><a href="./about.html">About</a></li>
-              <li><a href="./contact.html">Contact</a></li>
-            </ul>
-          </nav>
-        </div>
-        <div class="col-lg-3 mt-3">
-          <div class="header__right">
-            <div class="header__right__auth">
-              <a href="Login.html">Login/Register</a>
-              <!-- <a href="#">Register</a> -->
-            </div>
-            <ul class="header__right__widget">
-              <li><span class="icon_search search-switch"></span></li>
-              <li>
-                <a href="./wishlist.html"
-                  ><span class="icon_heart_alt"></span>
-                  <div class="tip">2</div>
-                </a>
-              </li>
-              <li>
-                <a href="./shop-cart.html"
-                  ><span class="icon_bag_alt"></span>
-                  <div class="tip">2</div>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="canvas__open">
-        <i class="fa fa-bars"></i>
-      </div>
-    </div>
-  </header>
-  <!-- Header Section End -->
+
 
   <!-- Breadcrumb Begin -->
   <div class="breadcrumb-option">
@@ -120,7 +52,7 @@
           </div>
           <div class="text-center mb-2 mt-5">
             <i class="fa fa-register"></i> Registration/Login for vendor?
-            <a href="./Login-Ven.html"><span>Click here!</span></a>
+            <a href="./login-vendor"><span>Click here!</span></a>
           </div>
         </div>
       </div>
@@ -130,6 +62,7 @@
 
   <!-- Form Section Begin -->
   <div class="login-wrap text-center mb-5">
+
     <div class="login-html">
       <input
         id="tab-1"
@@ -144,19 +77,27 @@
         >Sign Up</label
       >
       <div class="login-form">
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
         <div class="sign-in-htm">
           <div class="group">
-            <label for="user" class="label">Username</label>
-            <input id="user" type="text" class="input" />
+            <label for="user" class="label">Email</label>
+            <input id="email" type="email" class="input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+            @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
           </div>
           <div class="group">
             <label for="pass" class="label">Password</label>
-            <input
-              id="pass"
-              type="password"
-              class="input"
-              data-type="password"
-            />
+            <input id="password" type="password" class="input @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+            @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
           </div>
           <div class="group">
             <input id="check" type="checkbox" class="check" checked />
@@ -172,32 +113,43 @@
             <a href="#forgot">Forgot Password?</a>
           </div>
         </div>
+        </form>
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
         <div class="sign-up-htm">
           <div class="group">
-            <label for="user" class="label">Username</label>
-            <input id="user" type="text" class="input" />
+            <label for="user" class="label">Name</label>
+            <input id="name" type="text" class="input @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+            @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
           </div>
           <div class="group">
             <label for="pass" class="label">Password</label>
-            <input
-              id="pass"
-              type="password"
-              class="input"
-              data-type="password"
-            />
+            <input id="password" type="password" class="input @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+            @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
           </div>
           <div class="group">
             <label for="pass" class="label">Repeat Password</label>
-            <input
-              id="pass"
-              type="password"
-              class="input"
-              data-type="password"
-            />
+            <input id="password-confirm" type="password" class="input" name="password_confirmation" required autocomplete="new-password">
           </div>
           <div class="group">
             <label for="pass" class="label">Email Address</label>
-            <input id="pass" type="text" class="input" />
+            <input id="email" type="email" class="input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+            @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
           </div>
           <div class="group">
             <input type="submit" class="button" value="Sign Up" />
@@ -207,8 +159,10 @@
               <label for="tab-1">Already Member?</a>
                     </div> -->
         </div>
+        </form>
       </div>
     </div>
+    </form>
   </div>
   <!-- Form Section End -->
 

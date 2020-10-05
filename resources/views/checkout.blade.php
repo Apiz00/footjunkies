@@ -38,76 +38,7 @@
     </div>
     <!-- Offcanvas Menu End -->
 
-    <!-- Header Section Begin -->
-    <header class="header" style="text-align: center;">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-xl-3 col-lg-2">
-            <div class="header__logo">
-              <a href="/home"
-                ><img
-                  src="img/foot_junkies_logo-01.png"
-                  style="width: 25%; margin-right: 30%;"
-                  alt=""
-              /></a>
-            </div>
-          </div>
-          <div class="col-xl-6 col-lg-7 mt-3">
-            <nav class="header__menu">
-              <ul>
-                <li><a href="/home">Home</a></li>
-                <li><a href="/mens">Men's</a></li>
-                <li><a href="/womens">Women's</a></li>
-                <li><a href="/kids">Kid’s</a></li>
-                <li><a href="/accesories">Accessories</a></li>
-                <li><a href="/shop">Shop</a></li>
-                <li>
-                  <a href="#">Pages</a>
-                  <ul class="dropdown">
-                    <li>
-                      <a href="/product">Product Details</a>
-                    </li>
-                    <li><a href="/shop-cart">Shop Cart</a></li>
-                    <li class="active">
-                      <a href="/checkout">Checkout</a>
-                    </li>
-                    <li><a href="/orderstracking">Orders Tracking</a></li>
-                  </ul>
-                </li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
-              </ul>
-            </nav>
-          </div>
-          <div class="col-lg-3 mt-3">
-            <div class="header__right">
-              <div class="header__right__auth">
-                <a href="/login">Login / Register</a>
-              </div>
-              <ul class="header__right__widget">
-                <li><span class="icon_search search-switch"></span></li>
-                <li>
-                  <a href="/wishlist"
-                    ><span class="icon_heart_alt"></span>
-                    <div class="tip">2</div>
-                  </a>
-                </li>
-                <li>
-                  <a href="/shop-cart"
-                    ><span class="icon_bag_alt"></span>
-                    <div class="tip">2</div>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="canvas__open">
-          <i class="fa fa-bars"></i>
-        </div>
-      </div>
-    </header>
-    <!-- Header Section End -->
+
 
     <!-- Breadcrumb Begin -->
     <div class="breadcrumb-option">
