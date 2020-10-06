@@ -19,6 +19,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin');
+Route::get('/manager', 'ManagerController@index')->name('manager')->middleware('manager');
+
+Route::get('/customer', 'CustomerController@index')->name('customer')->middleware('customer');
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/product', function () {
