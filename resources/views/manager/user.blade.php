@@ -146,7 +146,7 @@
                         <div class="card-body">
                             <h5 class="card-category text-gray">{{auth()->user()->email}}</h5>
                             <h6 class="card-category text-gray">CEO / Co-Founder</h6>
-                            <h4 class="card-title">{{auth()->user()->name}}</h4>
+                            <h4 class="card-title">{{auth()->user()->shop->shop_name}}</h4>
                             <p class="card-description">
                                 {{auth()->user()->shop->description}}
                             </p>
