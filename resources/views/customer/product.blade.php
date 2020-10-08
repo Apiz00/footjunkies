@@ -47,7 +47,7 @@
           <div class="col-lg-12">
             <div class="breadcrumb__links">
               <a href="/home"><i class="fa fa-home"></i> Home</a>
-              <a href="#">Women’s </a>
+              <a href="#">{{$product->product_category}}</a>
               <span>Essential structured blazer</span>
             </div>
           </div>
@@ -111,8 +111,8 @@
           <div class="col-lg-6">
             <div class="product__details__text">
               <h3>
-                Essential structured blazer
-                <span>Brand: SKMEIMore Men Watches from SKMEI</span>
+                {{$product->product_name}}
+              <span>Brand: {{$product->product_brand}}</span>
               </h3>
               <div class="rating">
                 <i class="fa fa-star"></i>
@@ -123,23 +123,24 @@
                 <span>( 138 reviews )</span>
               </div>
               <div class="product__details__price">
-                $ 75.0 <span>$ 83.0</span>
+                RM {{$product->product_price}} <span>RM {{$product->product_price + 5}}</span>
               </div>
               <p>
-                Nemo enim ipsam voluptatem quia aspernatur aut odit aut loret
-                fugit, sed quia consequuntur magni lores eos qui ratione
-                voluptatem sequi nesciunt.
+                {{$product->product_description}}
               </p>
               <div class="product__details__button">
-                <div class="quantity">
-                  <span>Quantity:</span>
-                  <div class="pro-qty">
-                    <input type="text" value="1" />
-                  </div>
-                </div>
-                <a href="#" class="cart-btn"
-                  ><span class="icon_bag_alt"></span> Add to cart</a
-                >
+                <form action="{{'/product/'.$product->id.'/buy/'}}" method="get">
+                    @csrf
+                    <div class="quantity">
+                      <span>Quantity:</span>
+                      <div class="pro-qty">
+                        <input type="text" value="1" name="quantity"/>
+                      </div>
+                    </div>
+                    <button type="submit" class="cart-btn border-none"
+                      ><span class="icon_bag_alt"></span> Buy Now</button
+                    >
+                </form>
                 <ul>
                   <li>
                     <a href="#"><span class="icon_heart_alt"></span></a>
@@ -155,7 +156,7 @@
                     <span>Availability:</span>
                     <div class="stock__checkbox">
                       <label for="stockin">
-                        In Stock
+                        In Stock, Left {{$product->product_quantity}} Units
                         <input type="checkbox" id="stockin" />
                         <span class="checkmark"></span>
                       </label>
@@ -247,204 +248,26 @@
                 <div class="tab-pane active" id="tabs-1" role="tabpanel">
                   <h6>Description</h6>
                   <p>
-                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
-                    odit aut loret fugit, sed quia consequuntur magni dolores
-                    eos qui ratione voluptatem sequi nesciunt loret. Neque porro
-                    lorem quisquam est, qui dolorem ipsum quia dolor si. Nemo
-                    enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-                    aut loret fugit, sed quia ipsu consequuntur magni dolores
-                    eos qui ratione voluptatem sequi nesciunt. Nulla consequat
-                    massa quis enim.
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                    Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
-                    natoque penatibus et magnis dis parturient montes, nascetur
-                    ridiculus mus. Donec quam felis, ultricies nec, pellentesque
-                    eu, pretium quis, sem.
+                    {{$product->product_description}}
                   </p>
                 </div>
                 <div class="tab-pane" id="tabs-2" role="tabpanel">
                   <h6>Specification</h6>
                   <p>
-                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
-                    odit aut loret fugit, sed quia consequuntur magni dolores
-                    eos qui ratione voluptatem sequi nesciunt loret. Neque porro
-                    lorem quisquam est, qui dolorem ipsum quia dolor si. Nemo
-                    enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-                    aut loret fugit, sed quia ipsu consequuntur magni dolores
-                    eos qui ratione voluptatem sequi nesciunt. Nulla consequat
-                    massa quis enim.
+                    {{$product->product_description}}
+
                   </p>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                    Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
-                    natoque penatibus et magnis dis parturient montes, nascetur
-                    ridiculus mus. Donec quam felis, ultricies nec, pellentesque
-                    eu, pretium quis, sem.
-                  </p>
+
                 </div>
                 <div class="tab-pane" id="tabs-3" role="tabpanel">
                   <h6>Reviews ( 2 )</h6>
                   <p>
-                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
-                    odit aut loret fugit, sed quia consequuntur magni dolores
-                    eos qui ratione voluptatem sequi nesciunt loret. Neque porro
-                    lorem quisquam est, qui dolorem ipsum quia dolor si. Nemo
-                    enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-                    aut loret fugit, sed quia ipsu consequuntur magni dolores
-                    eos qui ratione voluptatem sequi nesciunt. Nulla consequat
-                    massa quis enim.
+                    This is a good product
                   </p>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                    Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
-                    natoque penatibus et magnis dis parturient montes, nascetur
-                    ridiculus mus. Donec quam felis, ultricies nec, pellentesque
-                    eu, pretium quis, sem.
+                    I love it!
                   </p>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <div class="related__title">
-              <h5>RELATED PRODUCTS</h5>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="product__item">
-              <div
-                class="product__item__pic set-bg"
-                data-setbg="img/product/related/rp-1.jpg"
-              >
-                <div class="label new">New</div>
-                <ul class="product__hover">
-                  <li>
-                    <a href="img/product/related/rp-1.jpg" class="image-popup"
-                      ><span class="arrow_expand"></span
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="#"><span class="icon_heart_alt"></span></a>
-                  </li>
-                  <li>
-                    <a href="#"><span class="icon_bag_alt"></span></a>
-                  </li>
-                </ul>
-              </div>
-              <div class="product__item__text">
-                <h6><a href="#">Buttons tweed blazer</a></h6>
-                <div class="rating">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-                <div class="product__price">$ 59.0</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="product__item">
-              <div
-                class="product__item__pic set-bg"
-                data-setbg="img/product/related/rp-2.jpg"
-              >
-                <ul class="product__hover">
-                  <li>
-                    <a href="img/product/related/rp-2.jpg" class="image-popup"
-                      ><span class="arrow_expand"></span
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="#"><span class="icon_heart_alt"></span></a>
-                  </li>
-                  <li>
-                    <a href="#"><span class="icon_bag_alt"></span></a>
-                  </li>
-                </ul>
-              </div>
-              <div class="product__item__text">
-                <h6><a href="#">Flowy striped skirt</a></h6>
-                <div class="rating">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-                <div class="product__price">$ 49.0</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="product__item">
-              <div
-                class="product__item__pic set-bg"
-                data-setbg="img/product/related/rp-3.jpg"
-              >
-                <div class="label stockout">out of stock</div>
-                <ul class="product__hover">
-                  <li>
-                    <a href="img/product/related/rp-3.jpg" class="image-popup"
-                      ><span class="arrow_expand"></span
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="#"><span class="icon_heart_alt"></span></a>
-                  </li>
-                  <li>
-                    <a href="#"><span class="icon_bag_alt"></span></a>
-                  </li>
-                </ul>
-              </div>
-              <div class="product__item__text">
-                <h6><a href="#">Cotton T-Shirt</a></h6>
-                <div class="rating">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-                <div class="product__price">$ 59.0</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="product__item">
-              <div
-                class="product__item__pic set-bg"
-                data-setbg="img/product/related/rp-4.jpg"
-              >
-                <ul class="product__hover">
-                  <li>
-                    <a href="img/product/related/rp-4.jpg" class="image-popup"
-                      ><span class="arrow_expand"></span
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="#"><span class="icon_heart_alt"></span></a>
-                  </li>
-                  <li>
-                    <a href="#"><span class="icon_bag_alt"></span></a>
-                  </li>
-                </ul>
-              </div>
-              <div class="product__item__text">
-                <h6><a href="#">Slim striped pocket shirt</a></h6>
-                <div class="rating">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-                <div class="product__price">$ 59.0</div>
               </div>
             </div>
           </div>

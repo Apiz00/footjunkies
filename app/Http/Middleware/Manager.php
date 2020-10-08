@@ -22,19 +22,20 @@ class Manager
             return redirect()->route('login');
         }
 
+        if (Auth::user()->role == 2) {
+            // return redirect()->route('manager');
+            return $next($request);
+        }
+
         if (Auth::user()->role == 1) {
             return redirect()->route('admin');
             // return $next($request);
         }
 
-        if (Auth::user()->role == 2) {
-            return redirect()->route('manager');
-            // return $next($request);
-        }
 
         if (Auth::user()->role == 3) {
-            // return redirect()->route('customer');
-            return $next($request);
+            return redirect()->route('customer');
+            // return $next($request);
         }
     }
 }

@@ -6,6 +6,7 @@ use Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -29,20 +30,20 @@ class LoginController extends Controller
      */
     protected $redirectTo;
 
-    public function redirectTo()
+    protected function authenticated(Request $request, $user)
     {
         switch (Auth::user()->role) {
             case 1:
                 $this->redirectTo = '/admin';
-                return $this->redirectTo;
+                return redirect('/admin');;
                 break;
             case 2:
                 $this->redirectTo = '/manager';
-                return $this->redirectTo;
+                return redirect('/manager');
                 break;
             case 3:
                 $this->redirectTo = '/customer';
-                return $this->redirectTo;
+                return redirect('/home');
                 break;
             default:
                 $this->redirectTo = '/login';
