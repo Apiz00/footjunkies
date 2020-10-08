@@ -51,6 +51,7 @@ Route::get('/manager/order', 'ManagerController@order')->name('stock')->middlewa
 Route::post('/manager/order/fulfilled/{orderid}', 'ManagerController@fulfillOrder')->middleware('manager');
 Route::get('/manager/user', 'ManagerController@user')->name('user')->middleware('manager');
 Route::get('/manager/staff', 'ManagerController@staff')->name('staff')->middleware('manager');
+Route::post('/manager/staff/update', 'ManagerController@staffUpdate')->name('staff')->middleware('manager');
 Route::get('/register/store', 'ManagerController@registerStore')->name('storereg')->middleware('manager');
 Route::post('/register/store', 'ManagerController@createStore')->name('createstore')->middleware('manager');
 Route::post('/manager/update/{storeid}', 'ManagerController@updateInfo')->name('updatemanager')->middleware('manager');

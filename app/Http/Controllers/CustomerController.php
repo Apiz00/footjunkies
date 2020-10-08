@@ -48,6 +48,7 @@ class CustomerController extends Controller
     public function createOrder(Request $request, $product, $quantity)
     {
         $product = Product::findOrFail($product);
+        $product->product_quantity = $product->product_quantity - $quantity;
         $order = Order::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,

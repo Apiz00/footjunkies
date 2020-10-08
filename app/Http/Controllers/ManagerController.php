@@ -35,6 +35,17 @@ class ManagerController extends Controller
     public function staff() {
         return view('manager.staff');
     }
+
+    public function staffUpdate(Request $request) {
+        $user = auth()->user();
+        $user->name = $request->username;
+        $user->email = $request->email;
+
+        $user->save();
+
+        return back();
+    }
+
     public function registerStore() {
         return view('manager.store.create');
     }
