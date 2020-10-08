@@ -248,13 +248,18 @@
                                                     </div>
                                                 </td>
                                             <td class="text-primary">RM {{$product->product_price}}</td>
-                                                <td>
+                                                <td class="d-flex">
                                                     <i class="material-icons" data-toggle="modal"
                                                         data-target="#exampleModal3" style="cursor: pointer">visibility</i>
-                                                    <i class="material-icons" data-toggle="modal"
-                                                        data-target="#exampleModal2" style="cursor: pointer">delete</i>
+                                                    <form action="{{'/manager/product/delete/'.$product->id}}" method="POST">
+                                                        @csrf
+                                                        <button type="submit" class="bg-transparent border-none">
+                                                            <i  class="material-icons" style="cursor: pointer">delete</i>
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             </tr>
+
                                         @endforeach
                                     </tbody>
                                 </table>
