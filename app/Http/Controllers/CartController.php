@@ -25,7 +25,7 @@ class CartController extends Controller
         $product = Product::find($id);
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
-        $cart->add($product, count($cart->items)+1);
+        $cart->add($product, $product->id);
         // dd($cart);
         $request->session()->put('cart', $cart);
         return redirect('/shop-cart');
@@ -81,7 +81,7 @@ class CartController extends Controller
         }
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
-        dd($cart->items);
+        // dd($cart->items);
 
         $totalPrice = 0;
         // dd(count($cart->items));
