@@ -59,326 +59,104 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 mt-5 mb-5">
-          <h2 class="text-center mb-5">ABOUT US</h2>
+          <h2 class="text-center mb-5" style="color: #CA1515">ABOUT US</h2>
           <p class="text-center mb-5">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Exercitationem magnam nostrum voluptate repellat veniam minus nihil
-            voluptatum eaque fugit, perspiciatis perferendis amet? Dolorum iusto
-            perferendis veritatis similique. Perferendis, perspiciatis magnam.
+            Footjunkies is an e-commerce platform that brings heat to all sneaker heads in town - providing the most desirable & finest products in footwear and accessories. Footjunkies remains distinctive in its brand identity & culture by distinguishing in new & classic sneakers, and limited editions collaborations. <br><br>
+
+Launched in 2020, it is a platform tailored for the region, providing customers with an easy, secure and fast online shopping experience through strong payment and fulfillment support.
           </p>
         </div>
         <div class="row mt-5" style="margin-bottom: 30%;">
           <div class="col-lg-3 text-center">
-            <i class="fa fa-desktop mb-4" style="font-size: 35px;"></i>
+            {{-- <i class="fa fa-desktop mb-4" style="font-size: 35px;"></i> --}}
+            <h3 style="color: #CA1515">Our Purpose</h3><br>
             <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur,
-              alias?
+                We believe in the transformative power of technology and want to change the world for the better by providing a platform to connect buyers and sellers within one community.
             </p>
           </div>
           <div class="col-lg-3 text-center">
-            <i class="fa fa-desktop mb-4" style="font-size: 35px;"></i>
+            {{-- <i class="fa fa-desktop mb-4" style="font-size: 35px;"></i> --}}
+            <h3 style="color: #CA1515">Our Positioning</h3><br>
             <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur,
-              alias?
+                To Internet users across the region,Footjunkies offers a one-stop online shopping experience that provides a wide selection of products,a social community for exploration.            </p>
+          </div>
+          <div class="col-lg-3 text-center">
+            {{-- <i class="fa fa-desktop mb-4" style="font-size: 35px;"></i> --}}
+            <h3 style="color: #CA1515">We Stay Humble</h3><br>
+            <p>
+                Believe we are always the underdog, and seek to learn from the market and competitors.We know that we are not perfect and will always be.We work hard first, celebrate and enjoy later.
             </p>
           </div>
           <div class="col-lg-3 text-center">
-            <i class="fa fa-desktop mb-4" style="font-size: 35px;"></i>
+            {{-- <i class="fa fa-desktop mb-4" style="font-size: 35px;"></i> --}}
+            <h3 style="color: #CA1515">We Serve</h3><br>
             <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur,
-              alias?
-            </p>
-          </div>
-          <div class="col-lg-3 text-center">
-            <i class="fa fa-desktop mb-4" style="font-size: 35px;"></i>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur,
-              alias?
-            </p>
+                To Internet users across the region,Footjunkies offers a one-stop online shopping experience that provides a wide selection of products,a social community for exploration.            </p>
           </div>
         </div>
       </div>
     </div>
     <!-- About End -->
 
-    <!-- Blog Section Begin -->
-    <!-- <section class="blog spad">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col-md-4 col-sm-6">
-            <div class="blog__item">
-              <div
-                class="blog__item__pic large__item set-bg"
-                data-setbg="img/blog/blog-1.jpg"
-              ></div>
-              <div class="blog__item__text">
-                <h6>
-                  <a href="#"
-                    >No Bad Blood! The Reason Why Tamr Judge Finally Made Up
-                    With...</a
-                  >
-                </h6>
-                <ul>
-                  <li>by <span>Ema Timahe</span></li>
-                  <li>Seb 17, 2019</li>
-                </ul>
-              </div>
-            </div>
-            <div class="blog__item">
-              <div
-                class="blog__item__pic set-bg"
-                data-setbg="img/blog/blog-7.jpg"
-              ></div>
-              <div class="blog__item__text">
-                <h6>
-                  <a href="#"
-                    >Pot Party! See Farrah Abraham Flaunt Smoking Body At...</a
-                  >
-                </h6>
-                <ul>
-                  <li>by <span>Ema Timahe</span></li>
-                  <li>Seb 17, 2019</li>
-                </ul>
-              </div>
-            </div>
-            <div class="blog__item">
-              <div
-                class="blog__item__pic set-bg"
-                data-setbg="img/blog/blog-9.jpg"
-              ></div>
-              <div class="blog__item__text">
-                <h6>
-                  <a href="#"
-                    >CMT Awards 2019 Red Carpet Arrivals Carrie Underwood,
-                    Sheryl...</a
-                  >
-                </h6>
-                <ul>
-                  <li>by <span>Ema Timahe</span></li>
-                  <li>Seb 17, 2019</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-4 col-sm-6">
-            <div class="blog__item">
-              <div
-                class="blog__item__pic set-bg"
-                data-setbg="img/blog/blog-2.jpg"
-              ></div>
-              <div class="blog__item__text">
-                <h6>
-                  <a href="#"
-                    >Amf Cannes Red Carpet Celebrities Kendall Jenner,
-                    Pamela...</a
-                  >
-                </h6>
-                <ul>
-                  <li>by <span>Ema Timahe</span></li>
-                  <li>Seb 17, 2019</li>
-                </ul>
-              </div>
-            </div>
-            <div class="blog__item">
-              <div
-                class="blog__item__pic set-bg"
-                data-setbg="img/blog/blog-4.jpg"
-              ></div>
-              <div class="blog__item__text">
-                <h6>
-                  <a href="#"
-                    >Ireland Baldwin Shows Off Trendy Ilse Valfre Tattoo At
-                    Stagecoach...</a
-                  >
-                </h6>
-                <ul>
-                  <li>by <span>Ema Timahe</span></li>
-                  <li>Seb 17, 2019</li>
-                </ul>
-              </div>
-            </div>
-            <div class="blog__item">
-              <div
-                class="blog__item__pic set-bg"
-                data-setbg="img/blog/blog-8.jpg"
-              ></div>
-              <div class="blog__item__text">
-                <h6>
-                  <a href="#"
-                    >Kim Kardashian Steps Out In Paris Wearing Shocking
-                    Sparkly...</a
-                  >
-                </h6>
-                <ul>
-                  <li>by <span>Ema Timahe</span></li>
-                  <li>Seb 17, 2019</li>
-                </ul>
-              </div>
-            </div>
-            <div class="blog__item">
-              <div
-                class="blog__item__pic set-bg"
-                data-setbg="img/blog/blog-10.jpg"
-              ></div>
-              <div class="blog__item__text">
-                <h6>
-                  <a href="#"
-                    >A-list Battle! Angelina Jolie & Lady Gaga Fighting Over
-                    Who...</a
-                  >
-                </h6>
-                <ul>
-                  <li>by <span>Ema Timahe</span></li>
-                  <li>Seb 17, 2019</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-4 col-sm-6">
-            <div class="blog__item">
-              <div
-                class="blog__item__pic set-bg"
-                data-setbg="img/blog/blog-3.jpg"
-              ></div>
-              <div class="blog__item__text">
-                <h6>
-                  <a href="#"
-                    >Gigi Hadid, Rita Ora, Serena & Other Hot Celebs Stun At
-                    2019...</a
-                  >
-                </h6>
-                <ul>
-                  <li>by <span>Ema Timahe</span></li>
-                  <li>Seb 17, 2019</li>
-                </ul>
-              </div>
-            </div>
-            <div class="blog__item">
-              <div
-                class="blog__item__pic set-bg"
-                data-setbg="img/blog/blog-5.jpg"
-              ></div>
-              <div class="blog__item__text">
-                <h6>
-                  <a href="#"
-                    >Billboard Music Awards: Best, Worst & Wackiest Dresses On
-                    The...</a
-                  >
-                </h6>
-                <ul>
-                  <li>by <span>Ema Timahe</span></li>
-                  <li>Seb 17, 2019</li>
-                </ul>
-              </div>
-            </div>
-            <div class="blog__item">
-              <div
-                class="blog__item__pic large__item set-bg"
-                data-setbg="img/blog/blog-6.jpg"
-              ></div>
-              <div class="blog__item__text">
-                <h6>
-                  <a href="#"
-                    >Stephanie Pratt Busts Out Of Teeny Black Bikini During
-                    Hawaii...</a
-                  >
-                </h6>
-                <ul>
-                  <li>by <span>Ema Timahe</span></li>
-                  <li>Seb 17, 2019</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-12 text-center">
-            <a href="#" class="primary-btn load-btn">Load more posts</a>
-          </div>
-        </div>
-      </div>
-    </section> -->
-    <!-- Blog Section End -->
 
-    <!-- Footer Section Begin -->
-    <footer class="footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col-md-6 col-sm-7">
-            <div class="footer__about">
-              <div class="footer__logo">
-                <a href="/home"
-                  ><img
-                    src="img/foot_junkies_logo-01.png"
-                    style="width: 50%;"
-                    alt=""
-                /></a>
-              </div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt cilisis.
-              </p>
-              <div class="footer__payment">
-                <a href="#"><img src="img/payment/payment-1.png" alt="" /></a>
-                <a href="#"><img src="img/payment/payment-2.png" alt="" /></a>
-                <a href="#"><img src="img/payment/payment-3.png" alt="" /></a>
-                <a href="#"><img src="img/payment/payment-4.png" alt="" /></a>
-                <a href="#"><img src="img/payment/payment-5.png" alt="" /></a>
+
+      <!-- Footer Section Begin -->
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-7">
+              <div class="footer__about">
+                <div class="footer__logo">
+                  <a href="/home"
+                    ><img
+                      src="img/foot_junkies_logo-01.png"
+                      style="width: 50%;"
+                      alt=""
+                  /></a>
+                </div>
+                <p>
+                  We brings heat to all sneaker heads in town. Providing the most desirable & finest products in footwear and accessories.
+                </p>
+
               </div>
             </div>
-          </div>
-          <div class="col-lg-2 col-md-3 col-sm-5">
-            <div class="footer__widget">
-              <h6>Quick links</h6>
-              <ul>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">FAQ</a></li>
-              </ul>
+            <div class="col-lg-2 col-md-3 col-sm-5">
+              <div class="footer__widget">
+                <h6>Quick links</h6>
+                <ul>
+                  <li><a href="/about">About</a></li>
+                  <li><a href="/contact">Contact</a></li>
+
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-8 col-sm-8">
+              <div class="footer__widget">
+                  <h6>Account</h6>
+                  <ul>
+                    <li><a href="/orderstracking">Orders Tracking</a></li>
+                    <li><a href="/checkout">Checkout</a></li>
+                  </ul>
+                </div>
             </div>
           </div>
-          <div class="col-lg-2 col-md-3 col-sm-4">
-            <div class="footer__widget">
-              <h6>Account</h6>
-              <ul>
-                <li><a href="#">My Account</a></li>
-                <li><a href="#">Orders Tracking</a></li>
-                <li><a href="#">Checkout</a></li>
-                <li><a href="#">Wishlist</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-8 col-sm-8">
-            <div class="footer__newslatter">
-              <h6>NEWSLETTER</h6>
-              <form action="#">
-                <input type="text" placeholder="Email" />
-                <button type="submit" class="site-btn">Subscribe</button>
-              </form>
-              <div class="footer__social">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-youtube-play"></i></a>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-                <a href="#"><i class="fa fa-pinterest"></i></a>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="footer__copyright__text">
+                <p>
+                  Copyright &copy;
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  All rights reserved
+                </p>
               </div>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="footer__copyright__text">
-              <p>
-                Copyright &copy;
-                <script>
-                  document.write(new Date().getFullYear());
-                </script>
-                All rights reserved
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- Footer Section End -->
+      </footer>
+      <!-- Footer Section End -->
 
     <!-- Search Begin -->
     <div class="search-model">

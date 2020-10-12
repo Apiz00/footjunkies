@@ -2,7 +2,65 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="login-wrap text-center mb-5">
+
+        <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked /><label for="tab-1" class="tab">Sign
+                In</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up" />
+            <label for="tab-2" class="tab"></label>
+            <div class="login-form">
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <div class="sign-in-htm">
+                        <div class="group">
+                            <label for="user" class="label">Email</label>
+                            <input id="email" type="email" class="input @error('email') is-invalid @enderror" name="email"
+                                value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Password</label>
+                            <input id="password" type="password" class="input @error('password') is-invalid @enderror"
+                                name="password" required autocomplete="current-password">
+
+                            @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="group">
+                            <input id="check" type="checkbox" class="check" checked />
+                            {{-- <label for="check"><span class="icon"></span> Keep me Signed in</label> --}}
+                            <label class="form-check-label" for="remember">
+                                <span class="icon mr-1 mt-1"></span>{{ __('Remember Me') }}
+                            </label>
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" value="Sign In" />
+                        </div>
+                        <div class="hr"></div>
+                        <div class="foot-lnk">
+                            @if (Route::has('password.request'))
+                            <a class="btn btn-link" style="color: #000
+                            " href="{{ route('password.request') }}">
+                                {{ __('Forgot Your Password?') }}
+                            </a>
+                        @endif
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{-- <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
@@ -68,6 +126,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 @endsection
+
+
+{{-- login --}}

@@ -1,4 +1,4 @@
-/* 
+/*
 [Table of contents]
 
 1.  Template default CSS
@@ -430,10 +430,10 @@ ol {
 }
 
 .header__right__auth a {
-    font-size: 12px;
+    font-size: 14px;
     color: #666666;
     position: relative;
-    margin-right: 8px;
+    margin-right: 10px;
 }
 
 .header__right__auth a:last-child {
@@ -446,10 +446,9 @@ ol {
 
 .header__right__auth a:after {
     position: absolute;
-    right: -8px;
-    top: -2px;
-    content: "/";
-    font-size: 13px;
+    right: -15px;
+    top: 8px;
+    font-size: 15px;
 }
 
 .header__right__widget {
@@ -3694,7 +3693,7 @@ a {
     width: 100%;
     height: 100%;
     position: absolute;
-    padding: 90px 70px 50px 70px;
+    padding: 50px 70px 50px 70px;
     background: #fff(40, 57, 101, 0.9);
 }
 
@@ -3749,7 +3748,12 @@ a {
 }
 
 .login-form .group .label,
-.login-form .group .input,
+.login-form .group .input {
+    width: 100%;
+    color: #000000;
+    display: block;
+}
+
 .login-form .group .button {
     width: 100%;
     color: #fff;

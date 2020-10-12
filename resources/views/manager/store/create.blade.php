@@ -69,16 +69,16 @@
     <!-- Offcanvas Menu End -->
     <div class="breadcrumb__links mt-3">
       <a href="./index.html"><i class="fa fa-home ml-3"></i> Home</a>
-      <span>Vendor Registration</span>
+      <span>Manager Enquiries</span>
     </div>
-    <h3 class="text-center mt-5">Registeration for Vendor.</h3>
+    <h3 class="text-center mt-5">Manager Enquiries</h3>
     <br>
-    <h6 class="text-center">Click Sign Up!</h6>
+    <h6 class="text-center">Click Sign Up Below!</h6>
     <form action="/register/store" method="POST" enctype="multipart/form-data">
         @csrf
 
     <!-- Form Section Begin -->
-    <div class="login-wrap text-center mt-5">
+    <div class="login-wrap text-center mt-4">
       <div class="login-html">
         {{-- <input
           id="tab-1"
@@ -126,13 +126,13 @@
               <input id="pass" name="shopssmno" type="text" class="input" />
             </div>
             <div class="form-group">
-                <label for="image">Choose Image</label>
-                <input id="image" type="file" name="image">
+                <label class="mb-2" for="image">Choose Image</label>
+                <input class="mb-2" id="image" type="file" name="image" style="margin-left: 5rem">
             </div>
             <div class="group">
                 <input type="submit" class="button" value="Sign Up" />
             </div>
-            <div class="hr"></div>
+            {{-- <div class="hr"></div> --}}
             <!-- <div class="foot-lnk">
                   <label for="tab-1">Already Member?</a>
                         </div> -->

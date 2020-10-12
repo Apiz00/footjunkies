@@ -70,13 +70,10 @@
                       <li class="{{ Request::is( 'accesories') ? "active":"" }}"><a href="/accesories">Accessories</a></li>
                       <li class="{{ Request::is( 'shop') ? "active":"" }}"><a href="/shop">Shop</a></li>
                       <li>
-                        <a href="#">Pages</a>
+                        <a href="#">Tracking</a>
                         <ul class="dropdown">
-                            <li class="{{ Request::is( 'product') ? "active":"" }}">
-                            <a href="/product">Product Details</a>
-                          </li>
-                          <li class="{{ Request::is( 'shop-cart') ? "active":"" }}"><a href="/shop-cart">Shop Cart</a></li>
-                          <li class="{{ Request::is( 'checkout') ? "active":"" }}"><a href="/checkout">Checkout</a></li>
+
+
                           <li class="{{ Request::is( 'orderstracking') ? "active":"" }}"><a href="/orderstracking">Orders Tracking</a></li>
                         </ul>
                       </li>
@@ -86,7 +83,7 @@
                   </nav>
                 </div>
                 <div class="col-lg-3 mt-3">
-                  <div class="header__right">
+                  <div class="header__right" style="margin-right:20px;">
                     <div class="header__right__auth">
                       <ul class="navbar-nav ml-auto ">
                           <!-- Authentication Links -->
@@ -119,17 +116,11 @@
                       <!-- <a href="#">Register</a> -->
                     </div>
                     <ul class="header__right__widget">
-                      <li><span class="icon_search search-switch"></span></li>
-                      <li>
-                        <a href="/wishlist"
-                          ><span class="icon_heart_alt"></span>
-                          <div class="tip">2</div>
-                        </a>
-                      </li>
+
                       <li>
                         <a href="/shop-cart"
                           ><span class="icon_bag_alt"></span>
-                          <div class="tip">2</div>
+
                         </a>
                       </li>
                     </ul>
