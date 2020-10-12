@@ -29,7 +29,6 @@ class CartController extends Controller
         // dd($cart);
         $request->session()->put('cart', $cart);
         return redirect('/shop-cart');
-
     }
 
     public function getReduceByOne($id)
@@ -84,18 +83,12 @@ class CartController extends Controller
         // dd($cart->items);
 
         $totalPrice = 0;
-        // dd(count($cart->items));
-        // if (count($cart->items) > 1) {
-            for ($i = 1; $i <= count($cart->items); $i++) {
-                // dd($cart->items[$i]['item']->product_price);
-                $totalPriceOne = $cart->items[$i]['qty'] * $cart->items[$i]['item']->product_price;
-                $totalPrice = $totalPriceOne + $totalPrice;
-            }
-        // } else {
-        //     $totalPriceOne = $cart->items['qty'] * $cart->items['item']->product_price;
-        //         $totalPrice = $totalPriceOne + $totalPrice;
-        // }
-        // dd($totalPrice);
+
+        foreach ($cart->items as $item) {
+            $totalPriceOne = $item['qty'] * $item['item']->product_price;
+            $totalPrice = $totalPriceOne + $totalPrice;
+        }
+
         $cart->totalPrice = $totalPrice;
         return view('customer.shoppingcart', ['products' => $cart->items, 'totalPrice' => $totalPrice]);
     }
@@ -109,9 +102,8 @@ class CartController extends Controller
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         $totalPrice = 0;
-        for ($i = 1; $i <= count($cart->items); $i++) {
-            // dd($cart->items[$i]['item']->product_price);
-            $totalPriceOne = $cart->items[$i]['qty'] * $cart->items[$i]['item']->product_price;
+        foreach ($cart->items as $item) {
+            $totalPriceOne = $item['qty'] * $item['item']->product_price;
             $totalPrice = $totalPriceOne + $totalPrice;
         }
         // dd($totalPrice);
@@ -133,9 +125,8 @@ class CartController extends Controller
         $order->name = $request->input('name');
         $shopid = $cart->items[1]['item']['shop_id'];
         $totalPrice = 0;
-        for ($i = 1; $i <= count($cart->items); $i++) {
-            // dd($cart->items[$i]['item']->product_price);
-            $totalPriceOne = $cart->items[$i]['qty'] * $cart->items[$i]['item']->product_price;
+        foreach ($cart->items as $item) {
+            $totalPriceOne = $item['qty'] * $item['item']->product_price;
             $totalPrice = $totalPriceOne + $totalPrice;
         }
         $order->total_price = $totalPrice;
