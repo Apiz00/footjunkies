@@ -4,31 +4,34 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Order;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
 {
+
     public function mens()
     {
-        $mensproducts = Product::all()->where('product_category', 'mens');
+        $mensproducts = Product::where('product_category', 'mens')->get();
         return view('customer.mens', ['mensproducts' => $mensproducts]);
     }
 
     public function womens()
     {
-        $womensproducts = Product::all()->where('product_category', 'womens');
+        $womensproducts = Product::where('product_category', 'womens')->get();
         return view('customer.womens', ['womensproducts' => $womensproducts]);
     }
 
     public function kids()
     {
-        $kidsproduct = Product::all()->where('product_category', 'kids');
+        $kidsproduct = Product::where('product_category', 'kids')->get();
         return view('customer.kids', ['kidsproducts' => $kidsproduct]);
     }
 
     public function accesories()
     {
-        $accesories = Product::all()->where('product_category', 'accesories');
+        $accesories = Product::where('product_category', 'accesories')->get();
         return view('customer.accesories', ['accesoriesproducts' => $accesories]);
     }
 
@@ -67,4 +70,19 @@ class CustomerController extends Controller
 
         return view('customer.receipt', ['order' => $order, 'product' => $product, 'quantity' => $quantity]);
     }
+    public function showUserMessage(Request $request)
+    {
+        $user = Auth::User();
+        $user = User::findOrFail(auth()->id());
+        $user->message = $request->message;
+        $user->save;
+        return view('customer.contact', ['user' => $user]);
+    }
+    // public function storeUserMessage(Request $request)
+    // {
+    //     $user = Auth::User();
+    //     $user->message = $request->message;
+    //     $user->();
+    //     return back();
+    // }
 }

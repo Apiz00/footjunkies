@@ -71,12 +71,13 @@
                     <th></th>
                   </tr>
                 </thead>
-                <tbody>
+
+                {{-- <tbody>
                   <tr>
                     <td class="cart__product__item">
                       <img src="img/shop-cart/cp-1.jpg" alt="" />
                       <div class="cart__product__item__title">
-                        <h6>Chain bucket bag</h6>
+                      <h6>{{$product['item']['name']}}</h6>
                         <div class="rating">
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
@@ -172,7 +173,8 @@
                       <span class="icon_close"></span>
                     </td>
                   </tr>
-                </tbody>
+                </tbody> --}}
+
               </table>
             </div>
           </div>

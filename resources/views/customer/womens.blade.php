@@ -61,7 +61,7 @@
             <div class="col-lg-12 col-md-12">
             <div class="row">
                 @foreach ($womensproducts as $product)
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-3 col-md-6">
                   <div class="product__item">
                     <div
                       class="product__item__pic set-bg"

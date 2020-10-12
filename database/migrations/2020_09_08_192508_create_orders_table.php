@@ -14,26 +14,16 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
+
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('country');
-            $table->string('address');
-            $table->string('city');
-            $table->string('state');
-            $table->string('phone');
-            $table->string('email');
-            $table->boolean('fulfillment_status')->default(0);
-            $table->boolean('payment_status')->default(0);
-            $table->foreignId('shop_id')->default(9999999);
-            $table->foreign('shop_id')->references('id')->on('shops');
-            $table->foreignId('user_id')->default(9999999);
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreignId('product_id')->default(9999999);
-            $table->foreign('product_id')->references('id')->on('products');
-            $table->integer('price');
-            $table->integer('quantity');
             $table->timestamps();
+            $table->text('cart');
+            $table->text('address');
+            $table->string('name');
+            $table->double('rating')->nullable();
+            $table->text('comment')->nullable();
+            $table->double('table')->nullable();
+            $table->unsignedInteger('user_id')->default(9999999);
         });
     }
 

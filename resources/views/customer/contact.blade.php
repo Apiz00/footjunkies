@@ -82,11 +82,12 @@
               </div>
               <div class="contact__form">
                 <h5>SEND MESSAGE</h5>
-                <form action="#">
+                <form method="POST" action="/customer/contact">
+                    {{csrf_field()}}
+                    {{method_field('POST')}}
                   <input type="text" placeholder="Name" />
                   <input type="text" placeholder="Email" />
-                  <input type="text" placeholder="Website" />
-                  <textarea placeholder="Message"></textarea>
+                  <textarea name="message" placeholder="Message"></textarea>
                   <button type="submit" class="site-btn">Send Message</button>
                 </form>
               </div>

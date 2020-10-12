@@ -2,21 +2,83 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Cart extends Model
+class Cart
 {
-    public function customer()
+    public $items = null;
+    public $totalQty = 0;
+    public $totalPrice = 0;
+
+    public function __construct($oldCart)
     {
-        return $this->hasOne('App\Customer');
+        if ($oldCart) {
+            $this->items = $oldCart->items;
+            $this->totalQty = $oldCart->totalQty;
+            $this->totalPrice = $oldCart->totalPrice;
+        }
     }
-    public function invoice()
+
+    public function add($item, $id)
     {
-        return $this->hasOne('App\Invoice');
+        $storedItem = ['qty' => 0, 'price' => $item->price, 'item' => $item];
+        if ($this->items) {
+            if (array_key_exists($id, $this->items)) {
+                $storedItem = $this->items[$id];
+            }
+        }
+        $storedItem['qty']++;
+        $storedItem['price'] = $item->price * $storedItem['qty'];
+        $this->items[$id] = $storedItem;
+        $this->totalQty++;
+        $this->totalPrice += $item->price;
     }
-    public function product()
+
+    public function reduceByOne($id)
     {
-        return $this->hasMany('App\Product');
+        $this->items[$id]['qty']--;
+        $this->items[$id]['price'] -= $this->items[$id]['item']['price'];
+        $this->totalQty--;
+        $this->totalPrice -= $this->items[$id]['item']['price'];
+
+        if ($this->items[$id]['qty'] <= 0) {
+            unset($this->items[$id]);
+        }
     }
-    //
+
+    public function increaseByOne($id)
+    {
+        $this->items[$id]['qty']++;
+        $this->items[$id]['price'] += $this->items[$id]['item']['price'];
+        $this->totalQty++;
+        $this->totalPrice += $this->items[$id]['item']['price'];
+
+        if ($this->items[$id]['qty'] <= 0) {
+            unset($this->items[$id]);
+        }
+    }
+
+    public function removeItem($id)
+    {
+        $this->totalQty -= $this->items[$id]['qty'];
+        $this->totalPrice -= $this->items[$id]['price'];
+        unset($this->items[$id]);
+    }
 }
+
+// use Illuminate\Database\Eloquent\Model;
+
+// class Cart extends Model
+// {
+//     public function customer()
+//     {
+//         return $this->hasOne('App\Customer');
+//     }
+//     public function invoice()
+//     {
+//         return $this->hasOne('App\Invoice');
+//     }
+//     public function product()
+//     {
+//         return $this->hasMany('App\Product');
+//     }
+
+// }

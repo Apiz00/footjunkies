@@ -160,21 +160,77 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($shops as $shop)
-                                        <tr>
-                                            <td>{{$shop->id}}</td>
-                                            <td>{{$shop->shop_name}}</td>
-                                            <td>{{$shop->shop_location}}</td>
-                                            <td>{{$shop->shop_phone_number}}</td>
-                                            <td class="text-primary">{{$shop->shop_ssm_reg_no}}</td>
-                                            <td class="d-flex">
-                                                <form action="{{'/admin/shop/delete/'.$shop->id}}" method="POST">
-                                                    @csrf
-                                                    <button class=" bg-transparent" style="border: none; cursor:pointer;"><i class="material-icons">delete</i></button>
-                                                </form>
-                                                <i class="material-icons">warning</i>
-                                            </td>
-                                        </tr>
-                                        @endforeach
+
+                                        <!-- Modal2 -->
+<div
+class="modal fade"
+id="exampleModal2"
+tabindex="-1"
+role="dialog"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">
+      Delete This Product
+    </h5>
+    <button
+      type="button"
+      class="close"
+      data-dismiss="modal"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form>
+      <div class="confirmation">
+          <label for="yes_no_radio">Are you sure?</label>
+
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-secondary"
+      data-dismiss="modal"
+    >
+      Close
+    </button>
+    <form action="{{'/admin/shop/delete/'.$shop->id}}" method="POST">
+      @csrf
+    <button type="submit" class="btn btn-primary">
+      Yes
+    </button>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+<!-- modal2 -->
+<tr>
+    <td>{{$shop->id}}</td>
+    <td>{{$shop->shop_name}}</td>
+    <td>{{$shop->shop_location}}</td>
+    <td>{{$shop->shop_phone_number}}</td>
+    <td class="text-primary">{{$shop->shop_ssm_reg_no}}</td>
+    <td class="d-flex">
+
+        <i
+        class="material-icons"
+        data-toggle="modal"
+        data-target="#exampleModal2"
+        style="cursor: pointer"
+        >delete</i>
+    </td>
+</tr>
+@endforeach
                                     </tbody>
                                 </table>
                             </div>

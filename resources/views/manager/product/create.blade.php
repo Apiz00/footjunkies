@@ -6,7 +6,7 @@
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top">
         <div class="container-fluid">
             <div class="navbar-wrapper">
-                <a class="navbar-brand" href="javascript:;">Vendor Dashboard</a>
+                <a class="navbar-brand" href="javascript:;">Product Details</a>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -53,9 +53,14 @@
                             <i class="material-icons">person</i>
                             <p class="d-lg-none d-md-block">Account</p>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                            <a class="dropdown-item" href="#">Log out</a>
-                        </div>
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+ {{ __('Logout') }}
+</a>
+
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+ @csrf
+</form>
                     </li>
                 </ul>
             </div>
@@ -72,7 +77,7 @@
                             <p class="card-category">Complete your product</p>
                         </div>
                         <div class="card-body">
-                            <form action="/manager/product/create" method="POST">
+                            <form action="/manager/product/create" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-12">
@@ -158,6 +163,26 @@
                                                 step="any" class="form-control" />
                                         </div>
                                     </div>
+                                    <div class="row m-1">
+                                        <div class="col-md-4">
+
+                                                <label for="image">Product Image 1:</label>
+                                                <input type="file" id="image" name="image"><br><br>
+
+                                        </div>
+                                        <div class="col-md-4">
+
+                                                <label for="image">Product Image 2:</label>
+                                                <input type="file" id="image" name="image"><br><br>
+
+                                        </div>
+                                        <div class="col-md-4">
+
+                                                <label for="image">Product Image 3:</label>
+                                                <input type="file" id="image" name="image"><br><br>
+
+                                        </div>
+                                      </div>
                                 </div>
 
 

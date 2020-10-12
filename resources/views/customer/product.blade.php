@@ -146,7 +146,7 @@
                     <a href="#"><span class="icon_heart_alt"></span></a>
                   </li>
                   <li>
-                    <a href="#"><span class="icon_adjust-horiz"></span></a>
+                    <a href="{{ route('customer.addToCart', ['id' => $product->id])}}"><span class="icon_adjust-horiz"></span></a>
                   </li>
                 </ul>
               </div>

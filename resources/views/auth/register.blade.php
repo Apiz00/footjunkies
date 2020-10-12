@@ -63,8 +63,7 @@
                             <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
 
                             <div class="col-md-6">
-                                <input type="radio" name=" role" id="role" value="1">
-                                <span>Admin</span>
+
                                 <input type="radio" name=" role" id="role" value="2">
                                 <span>Manager</span>
                                 <input type="radio" name=" role" id="role" value="3">

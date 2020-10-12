@@ -38,7 +38,7 @@
     </div>
     <!-- Offcanvas Menu End -->
 
- 
+
 
     <!-- Breadcrumb Begin -->
     <div class="breadcrumb-option">
@@ -66,8 +66,7 @@
                   <tr>
                     <th>Product</th>
                     <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
+                    <th></th>
                     <th></th>
                   </tr>
                 </thead>
@@ -87,12 +86,15 @@
                       </div>
                     </td>
                     <td class="cart__price">$ 150.0</td>
-                    <td class="cart__quantity">
+                    {{-- <td class="cart__quantity">
                       <div class="pro-qty">
                         <input type="text" value="1" />
                       </div>
                     </td>
-                    <td class="cart__total">$ 300.0</td>
+                    <td class="cart__total">$ 300.0</td> --}}
+                    <td class="cart__plus">
+                        <span class="icon_plus"></span>
+                    </td>
                     <td class="cart__close">
                       <span class="icon_close"></span>
                     </td>

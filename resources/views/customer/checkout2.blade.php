@@ -32,7 +32,8 @@
       </div>
       <div id="mobile-menu-wrap"></div>
       <div class="offcanvas__auth">
-        <a href="Login.html">Login / Register</a>
+        <a href="#">Login</a>
+        <a href="#">Register</a>
       </div>
     </div>
     <!-- Offcanvas Menu End -->
@@ -46,7 +47,7 @@
           <div class="col-lg-12">
             <div class="breadcrumb__links">
               <a href="/home"><i class="fa fa-home"></i> Home</a>
-              <span>Men's</span>
+              <span>Checkout</span>
             </div>
           </div>
         </div>
@@ -54,63 +55,98 @@
     </div>
     <!-- Breadcrumb End -->
 
-    <!-- Shop Section Begin -->
-    <section class="shop spad">
+    <!-- Checkout Section Begin -->
+    <section class="checkout spad">
       <div class="container">
         <div class="row">
-
-          <div class="col-lg-12 col-md-12">
-            <div class="row">
-                @foreach ($mensproducts as $product)
-                <div class="col-lg-3 col-md-6">
-                  <div class="product__item">
-                    <div
-                      class="product__item__pic set-bg"
-                      data-setbg="img/shop/shop-m1.jpeg"
-                    >
-                      <div class="label new">New</div>
-                      <ul class="product__hover">
-                        <li>
-                          <a href="img/shop/shop-m1.jpeg" class="image-popup"
-                            ><span class="arrow_expand"></span
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="#"><span class="icon_heart_alt"></span></a>
-                        </li>
-                        <li>
-                          <a href="#"><span class="icon_bag_alt"></span></a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="product__item__text">
-                      <h6><a href="{{'/product/show/'.$product->id}}">{{$product->product_name}}</a></h6>
-                      <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                      </div>
-                    <div class="product__price">RM {{$product->product_price}}</div>
-                    </div>
+          <div class="col-lg-12">
+            <h6 class="coupon__link">
+              <span class="icon_tag_alt"></span>
+              <a href="#">Have a coupon?</a> Click here to enter your code.
+            </h6>
+          </div>
+        </div>
+        <form action="{{ route('customer.checkout2')}}" method="POST" class="checkout-form">
+            {{csrf_field()}}
+            {{method_field('post')}}
+          <div class="row">
+            <div class="col-lg-8">
+              <h5>Billing detail</h5>
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                  <div class="checkout__form__input">
+                    <p>Name<span>*</span></p>
+                    <input type="text" name="name"/>
                   </div>
                 </div>
-                @endforeach
-              <div class="col-lg-12 text-center">
-                <div class="pagination__option">
-                  <a href="#">1</a>
-                  <a href="#">2</a>
-                  <a href="#">3</a>
-                  <a href="#"><i class="fa fa-angle-right"></i></a>
+
+                <div class="col-lg-12">
+                  <div class="checkout__form__input">
+                    <p>Country <span>*</span></p>
+                    <input type="text" name="country"/>
+                  </div>
+                  <div class="checkout__form__input">
+                    <p>Address <span>*</span></p>
+                    <input type="text" placeholder="Street Address" name="address"/>
+                    <input
+                      type="text"
+                      placeholder="Apartment. suite, unite ect ( optinal )"
+                    />
+                  </div>
+                  <div class="checkout__form__input">
+                    <p>Town/City <span>*</span></p>
+                    <input type="text" name="city"/>
+                  </div>
+                  <div class="checkout__form__input">
+                    <p>Country/State <span>*</span></p>
+                    <input type="text" name="state"/>
+                  </div>
+                  <div class="checkout__form__input">
+                    <p>Postcode/Zip <span>*</span></p>
+                    <input type="text" name="postcode"/>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                  <div class="checkout__form__input">
+                    <p>Phone <span>*</span></p>
+                    <input type="text" name="phone"/>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                  <div class="checkout__form__input">
+                    <p>Email <span>*</span></p>
+                    <input type="text" name="email"/>
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="col-lg-4">
+              <div class="checkout__order">
+                <h5>Your order</h5>
+                <div class="checkout__order__product">
+                  <ul>
+                    <li>
+                      <span class="top__text">Product</span>
+                      <span class="top__text__right">Total</span>
+                    </li>
+                <li>{{$quantity}} - {{$product->product_name}}<span>RM {{$product->product_price}}</span></li>
+                  </ul>
+                </div>
+                <div class="checkout__order__total">
+                  <ul>
+                  <li>Subtotal <span>RM {{$quantity * $product->product_price}}</span></li>
+                    <li>Total <span>RM {{$quantity * $product->product_price}}</span></li>
+                  </ul>
+                </div>
+
+                <button type="submit" class="site-btn">Place oder</button>
+              </div>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     </section>
-    <!-- Shop Section End -->
+    <!-- Checkout Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer">
@@ -204,7 +240,6 @@
       </div>
     </div>
     <!-- Search End -->
-
 
 
 @endsection

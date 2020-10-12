@@ -28,22 +28,28 @@ Route::post('/admin/shop/delete/{shopid}', 'AdminController@deleteShop')->middle
 Route::get('/admin/customers', 'AdminController@customers')->name('customers')->middleware('admin');
 Route::post('/admin/customer/delete/{custid}', 'AdminController@deleteCustomer')->name('customersdelete')->middleware('admin');
 
+
 Route::get('/admin/products', 'AdminController@products')->name('products')->middleware('admin');
 Route::post('/admin/product/delete/{productid}', 'AdminController@deleteProduct')->name('deleteProducts')->middleware('admin');
 
-Route::get('/admin/tasks', 'AdminController@tasks')->name('tasks')->middleware('admin');
-Route::get('/admin/notifications', 'AdminController@notifications')->name('notifications')->middleware('admin');
+Route::get('/admin/tasks', 'TasksController@index')->name('tasks')->middleware('admin');
+Route::post('/admin/task/store', 'TasksController@store')->name('tasks')->middleware('admin');
+Route::delete('/admin/task/delete/{task}', 'TasksController@destroy')->name('tasks')->middleware('admin');
+Route::get('/admin/notifications', 'NotificationController@index')->name('notifications')->middleware('admin');
+Route::delete('/admin/notifications/delete/{notification}', 'NotificationController@destroy')->name('notifications')->middleware('admin');
 
 
 //manager route
 Route::get('/manager', 'ManagerController@index')->name('manager')->middleware('manager');
 Route::get('/manager/customer', 'ManagerController@customer')->name('customer')->middleware('manager');
-Route::get('/manager/location', 'ManagerController@location')->name('location')->middleware('manager');
+Route::get('/manager/tasks', 'TasksController@index')->name('tasks')->middleware('manager');
+Route::post('/manager/task/store', 'TasksController@store')->name('tasks')->middleware('manager');
+Route::delete('/manager/task/delete/{task}', 'TasksController@destroy')->name('tasks')->middleware('manager');
 Route::get('/manager/notifications', 'ManagerController@notifications')->name('notifications')->middleware('manager');
 Route::get('/manager/product/create', 'ManagerController@productcreateshow')->name('productcreateshow')->middleware('manager');
 Route::post('/manager/product/create', 'ManagerController@productcreate')->name('productcreate')->middleware('manager');
+Route::post('/manager/product/update/{product}', 'ProductController@update')->name('productupdate')->middleware('manager');
 Route::post('/manager/product/delete/{productid}', 'ManagerController@productDelete')->name('productdelete')->middleware('manager');
-
 Route::get('/manager/product', 'ManagerController@product')->name('product')->middleware('manager');
 Route::post('/manager/{productid}/update/quantity', 'ManagerController@updateQuantity')->middleware('manager');
 Route::get('/manager/shop', 'ManagerController@shop')->name('shop')->middleware('manager');
@@ -78,23 +84,21 @@ Route::get('/accesories', 'CustomerController@accesories');
 Route::get('product/show/{productid}', 'CustomerController@showProduct');
 
 Route::get('/product/{productid}/buy', 'CustomerController@buyProduct');
-
+Route::get('/contact', 'CustomerController@showUserMessage')->middleware('auth');
+Route::post('/customer/contact', 'NotificationController@storeUserMessage')->middleware('auth');
+Route::get('/wishlist', 'CartController@index');
 
 Route::get('/shop', function () {
-    return view('shop');
+    return view('/customer/shop');
 });
-Route::get('/wishlist', function () {
-    return view('wishlist');
-});
+
 Route::get('/orderstracking', function () {
-    return view('orderstracking');
+    return view('/customer/orderstracking');
 });
 Route::get('/about', function () {
-    return view('about');
+    return view('/customer/about');
 });
-Route::get('/contact', function () {
-    return view('contact');
-});
+
 Route::get('/login-cust', function () {
     return view('login-cust');
 });
@@ -102,8 +106,45 @@ Route::get('/login-vendor', function () {
     return view('login-ven');
 });
 Route::get('/shop-cart', function () {
-    return view('shop-cart');
+    return view('/customer/shop-cart');
 });
 Route::get('/checkout', function () {
-    return view('checkout');
+    return view('/customer/checkout');
 });
+
+
+
+//shopping cart route for restaurant
+Route::get('/menu/add-to-cart/{id}', [
+    'uses' => 'CartController@getAddToCart',
+    'as' => 'customer.addToCart'
+]);
+Route::get('/shop-cart', [
+    'uses' => 'CartController@getCart',
+    'as' => 'customer.shoppingcart'
+]);
+
+//reduce item button route for shopping cart
+Route::get('/reduce/{id}', [
+    'uses' => 'CartController@getReduceByOne',
+    'as' => 'Restaurant.reduceByOne'
+]);
+Route::get('/increase/{id}', [
+    'uses' => 'CartController@getIncreaseByOne',
+    'as' => 'Restaurant.increaseByOne'
+]);
+Route::get('/remove/{id}', [
+    'uses' => 'CartController@getRemoveItem',
+    'as' => 'Restaurant.remove'
+]);
+
+// checkout route for shopping cart restaurant
+Route::get('/checkout', [
+    'uses' => 'CartController@getCheckout',
+    'as' => 'customer.checkout'
+]);
+
+Route::post('/checkout', [
+    'uses' => 'CartController@PostCheckout',
+    'as' => 'customer.checkout'
+]);

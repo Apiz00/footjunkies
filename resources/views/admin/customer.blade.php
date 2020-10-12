@@ -94,16 +94,71 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($customers as $customer)
+<!-- Modal2 -->
+<div
+class="modal fade"
+id="exampleModal2"
+tabindex="-1"
+role="dialog"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">
+        Delete This Product
+      </h5>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <form>
+        <div class="confirmation">
+            <label for="yes_no_radio">Are you sure?</label>
+
+        </div>
+
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-secondary"
+        data-dismiss="modal"
+      >
+        Close
+      </button>
+      <form action="{{'/admin/customer/delete/'.$customer->id}}"
+        method="POST">
+        @csrf
+      <button type="submit" class="btn btn-primary">
+        Yes
+      </button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+<!-- modal2 -->
                                         <tr>
                                             <td>{{$customer->email}}</td>
                                             <td>{{$customer->name}}</td>
                                             <td>
-                                                <form action="{{'/admin/customer/delete/'.$customer->id}}"
-                                                    method="POST">
-                                                    @csrf
-                                                    <button class=" bg-transparent"
-                                                        style="border: none; cursor:pointer;"><i
-                                                            class="material-icons">delete</i></button>
+
+                                                    <i
+                                                    class="material-icons"
+                                                    data-toggle="modal"
+                                                    data-target="#exampleModal2"
+                                                    style="cursor: pointer"
+                                                    >delete</i>
                                                 </form>
                                             </td>
                                         </tr>

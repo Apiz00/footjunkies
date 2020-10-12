@@ -38,4 +38,7 @@ class Manager
             // return $next($request);
         }
     }
+    // public function tasks()
+    // {
+    // }
 }

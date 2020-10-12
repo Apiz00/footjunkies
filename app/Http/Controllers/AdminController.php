@@ -5,13 +5,17 @@ namespace App\Http\Controllers;
 use App\Shop;
 use App\User;
 use App\Product;
+use App\tasks;
 use Illuminate\Http\Request;
+
+use function GuzzleHttp\Promise\task;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard');
+        $tasks = auth()->user()->tasks;
+        return view('admin.dashboard', ['tasks' => $tasks]);
     }
 
     public function users()
@@ -26,12 +30,13 @@ class AdminController extends Controller
         return view('admin.shop', ['shops' => $shops]);
     }
 
-    public function deleteShop($shopid) {
+    public function deleteShop($shopid)
+    {
         $shop = Shop::findOrFail($shopid);
         $user = $shop->user()->get()->first();
-        $order = $shop->orders();
+        // $order = $shop->orders();
         $products = Product::where('shop_id', $shop->id);
-        $order->delete();
+        // $order->delete();
         $products->delete();
         $shop->delete();
         $user->delete();
@@ -44,7 +49,8 @@ class AdminController extends Controller
         return view('admin.customer', ['customers' => $customers]);
     }
 
-    public function deleteCustomer($custid) {
+    public function deleteCustomer($custid)
+    {
         $customer = User::findOrFail($custid);
         $customer->delete();
 
@@ -54,22 +60,14 @@ class AdminController extends Controller
     public function products()
     {
         $products = Product::all();
-        return view('admin.product', ['products'=> $products]);
+        return view('admin.product', ['products' => $products]);
     }
 
-    public function deleteProduct($productid) {
+    public function deleteProduct($productid)
+    {
         $product = Product::findOrFail($productid);
         $product->delete();
 
         return redirect('/admin/products');
-    }
-
-    public function tasks()
-    {
-        return view('admin.task');
-    }
-
-    public function notifications() {
-        return view('admin.notifications');
     }
 }

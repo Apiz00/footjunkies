@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
@@ -99,44 +99,44 @@
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                    <li class="nav-item active">
+                    <li class="{{ Request::is( 'admin') ? "active":"" }}">
                         <a class="nav-link" href="/admin">
                             <i class="material-icons">dashboard</i>
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="{{ Request::is('admin/users') ? "active":"" }}">
                         <a class="nav-link" href="/admin/users">
                             <i class="material-icons">person</i>
                             <p>User Profile</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="{{ Request::is( 'admin/shops') ? "active":"" }}">
                         <a class="nav-link" href="/admin/shops">
                             <i class="material-icons">content_paste</i>
                             <p>Shops List</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="{{ Request::is( 'admin/customers') ? "active":"" }}">
                         <a class="nav-link" href="/admin/customers">
                             <i class="material-icons">content_paste</i>
                             <p>Customers List</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="{{ Request::is( 'admin/products') ? "active":"" }}">
                         <a class="nav-link" href="/admin/products">
                             <i class="material-icons">content_paste</i>
                             <p>Products List</p>
                         </a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="{{ Request::is( 'admin/tasks') ? "active":"" }}">
                         <a class="nav-link" href="/admin/tasks">
                             <i class="material-icons">bubble_chart</i>
                             <p>Tasks List</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="{{ Request::is( 'admin/notifications') ? "active":"" }}">
                         <a class="nav-link" href="/admin/notifications">
                             <i class="material-icons">notifications</i>
                             <p>Notifications</p>
@@ -187,38 +187,6 @@
                     <a class="img-holder switch-trigger" href="javascript:void(0)">
                         <img src="{{asset('../assets/img/sidebar-4.jpg')}}" defer alt="" />
                     </a>
-                </li>
-                <li class="button-container">
-                    <a href="https://www.creative-tim.com/product/material-dashboard" target="_blank"
-                        class="btn btn-primary btn-block">Free Download</a>
-                </li>
-                <!-- <li class="header-title">Want more components?</li>
-              <li class="button-container">
-                  <a href="https://www.creative-tim.com/product/material-dashboard-pro" target="_blank" class="btn btn-warning btn-block">
-                    Get the pro version
-                  </a>
-              </li> -->
-                <li class="button-container">
-                    <a href="https://demos.creative-tim.com/material-dashboard/docs/2.1/getting-started/introduction.html"
-                        target="_blank" class="btn btn-default btn-block">
-                        View Documentation
-                    </a>
-                </li>
-                <li class="button-container github-star">
-                    <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard"
-                        data-icon="octicon-star" data-size="large" data-show-count="true"
-                        aria-label="Star ntkme/github-buttons on GitHub">Star</a>
-                </li>
-                <li class="header-title">Thank you for 95 shares!</li>
-                <li class="button-container text-center">
-                    <button id="twitter" class="btn btn-round btn-twitter">
-                        <i class="fa fa-twitter"></i> &middot; 45
-                    </button>
-                    <button id="facebook" class="btn btn-round btn-facebook">
-                        <i class="fa fa-facebook-f"></i> &middot; 50
-                    </button>
-                    <br />
-                    <br />
                 </li>
             </ul>
         </div>

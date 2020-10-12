@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     protected $fillable = [
-        'first_name',
-        'last_name',
+        'name',
         'country',
         'address',
         'city',
@@ -31,8 +30,14 @@ class Order extends Model
         return $this->hasOne('App\Payment');
     }
 
-    public function shop() {
+    public function shop()
+    {
         return $this->belongsTo('App\Shop');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
     //
 }

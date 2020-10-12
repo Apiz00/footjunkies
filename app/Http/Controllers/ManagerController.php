@@ -10,33 +10,43 @@ use Illuminate\Http\Request;
 
 class ManagerController extends Controller
 {
-    public function index() {
-        return view('manager.dashboard');
+    public function index()
+    {
+        $tasks = auth()->user()->tasks;
+        return view('manager.dashboard', ['tasks' => $tasks]);
     }
-    public function customer() {
+    public function customer()
+    {
         return view('manager.customer');
     }
-    public function location() {
+    public function location()
+    {
         return view('manager.location');
     }
-    public function notifications() {
+    public function notifications()
+    {
         return view('manager.notifications');
     }
 
-    public function shop() {
+    public function shop()
+    {
         return view('manager.shop');
     }
-    public function stock() {
+    public function stock()
+    {
         return view('manager.stock');
     }
-    public function user() {
+    public function user()
+    {
         return view('manager.user');
     }
-    public function staff() {
+    public function staff()
+    {
         return view('manager.staff');
     }
 
-    public function staffUpdate(Request $request) {
+    public function staffUpdate(Request $request)
+    {
         $user = auth()->user();
         $user->name = $request->username;
         $user->email = $request->email;
@@ -46,11 +56,13 @@ class ManagerController extends Controller
         return back();
     }
 
-    public function registerStore() {
+    public function registerStore()
+    {
         return view('manager.store.create');
     }
 
-    public function createStore(Request $request) {
+    public function createStore(Request $request)
+    {
         $store = Shop::create([
             'shop_name' => $request->shopname,
             'shop_location' => $request->shoplocation,
@@ -62,7 +74,8 @@ class ManagerController extends Controller
         return redirect('/manager');
     }
 
-    public function updateInfo($storeid, Request $request) {
+    public function updateInfo($storeid, Request $request)
+    {
         $shop = Shop::findOrFail($storeid);
         $user = auth()->user();
 
@@ -74,19 +87,21 @@ class ManagerController extends Controller
         $user->save();
 
         return back();
-
     }
 
-    public function product() {
+    public function product()
+    {
         $products = Product::all()->where('shop_id', auth()->user()->shop->id);
         return view('manager.product', ['products' => $products]);
     }
 
-    public function productcreateshow() {
+    public function productcreateshow()
+    {
         return view('manager.product.create');
     }
 
-    public function productcreate(Request $request) {
+    public function productcreate(Request $request)
+    {
 
         $store = Product::create([
             'product_id' => $request->productid,
@@ -104,14 +119,16 @@ class ManagerController extends Controller
         return redirect('/manager/product');
     }
 
-    public function productDelete($productid) {
+    public function productDelete($productid)
+    {
         $product = Product::findOrFail($productid);
         $product->delete();
 
         return redirect('/manager/product');
     }
 
-    public function updateQuantity(Request $request, $productid) {
+    public function updateQuantity(Request $request, $productid)
+    {
         $product = Product::findOrFail($productid);
         $product->product_quantity = $request->quantity;
         $product->save();
@@ -119,12 +136,14 @@ class ManagerController extends Controller
         return back();
     }
 
-    public function order() {
+    public function order()
+    {
         $order = Order::all()->where('shop_id', auth()->user()->shop->id);
         return view('manager.order', ['orders' => $order]);
     }
 
-    public function fulfillOrder(Request $request, $orderid) {
+    public function fulfillOrder(Request $request, $orderid)
+    {
         $order = Order::findOrFail($orderid);
         $order->fulfillment_status = $request->fulfillment;
         $order->save();

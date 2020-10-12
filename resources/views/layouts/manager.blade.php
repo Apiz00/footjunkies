@@ -99,57 +99,43 @@
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                  <li class="nav-item active">
+                    <li class="{{ Request::is( 'manager') ? "active":"" }}">
                     <a class="nav-link" href="/manager">
                       <i class="material-icons">dashboard</i>
                       <p>Dashboard</p>
                     </a>
                   </li>
-                  <li class="nav-item">
+                  <li class="{{ Request::is( 'manager/user') ? "active":"" }}">
                     <a class="nav-link" href="/manager/user">
                       <i class="material-icons">person</i>
                       <p>Shop Profile</p>
                     </a>
                   </li>
-                  <li class="nav-item">
+                  <li class="{{ Request::is( 'manager/staff') ? "active":"" }}">
                     <a class="nav-link" href="/manager/staff">
                       <i class="material-icons">bubble_chart</i>
                       <p>Staff Profile</p>
                     </a>
                   </li>
-                  <li class="nav-item">
+                <li class="{{ Request::is( 'manager/product') ? "active":"" }}">
                     <a class="nav-link" href="/manager/product">
                       <i class="material-icons">assignment</i>
                       <p>Products List</p>
                     </a>
                   </li>
-                  <li class="nav-item">
+                <li class="{{ Request::is( 'manager/order') ? "active":"" }}">
                     <a class="nav-link" href="/manager/order">
                       <i class="material-icons">view_list</i>
                       <p>Order List</p>
                     </a>
                   </li>
-                  <!-- <li class="nav-item">
-                    <a class="nav-link" href="/manager/">
-                      <i class="material-icons">content_paste</i>
-                      <p>Customers List</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/manager/">
-                      <i class="material-icons">content_paste</i>
-                      <p>Products List</p>
-                    </a>
-                  </li> -->
-
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="/manager/location">
+                  <li class="{{ Request::is( 'manager/tasks') ? "active":"" }}">
+                    <a class="nav-link" href="/manager/tasks">
                       <i class="material-icons">plagiarism</i>
-                      <p>Task Products</p>
+                      <p>Task List</p>
                     </a>
                   </li>
-                  <li class="nav-item">
+                  <li class="{{ Request::is( 'manager/notifications') ? "active":"" }}">
                     <a class="nav-link" href="/manager/notifications">
                       <i class="material-icons">notifications</i>
                       <p>Search Products</p>
@@ -200,38 +186,6 @@
                     <a class="img-holder switch-trigger" href="javascript:void(0)">
                         <img src="{{asset('../assets/img/sidebar-4.jpg')}}" defer alt="" />
                     </a>
-                </li>
-                <li class="button-container">
-                    <a href="https://www.creative-tim.com/product/material-dashboard" target="_blank"
-                        class="btn btn-primary btn-block">Free Download</a>
-                </li>
-                <!-- <li class="header-title">Want more components?</li>
-              <li class="button-container">
-                  <a href="https://www.creative-tim.com/product/material-dashboard-pro" target="_blank" class="btn btn-warning btn-block">
-                    Get the pro version
-                  </a>
-              </li> -->
-                <li class="button-container">
-                    <a href="/manager/"
-                        target="_blank" class="btn btn-default btn-block">
-                        View Documentation
-                    </a>
-                </li>
-                <li class="button-container github-star">
-                    <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard"
-                        data-icon="octicon-star" data-size="large" data-show-count="true"
-                        aria-label="Star ntkme/github-buttons on GitHub">Star</a>
-                </li>
-                <li class="header-title">Thank you for 95 shares!</li>
-                <li class="button-container text-center">
-                    <button id="twitter" class="btn btn-round btn-twitter">
-                        <i class="fa fa-twitter"></i> &middot; 45
-                    </button>
-                    <button id="facebook" class="btn btn-round btn-facebook">
-                        <i class="fa fa-facebook-f"></i> &middot; 50
-                    </button>
-                    <br />
-                    <br />
                 </li>
             </ul>
         </div>

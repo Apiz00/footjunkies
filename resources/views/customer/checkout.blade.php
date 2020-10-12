@@ -47,7 +47,7 @@
           <div class="col-lg-12">
             <div class="breadcrumb__links">
               <a href="/home"><i class="fa fa-home"></i> Home</a>
-              <span>Shopping cart</span>
+              <span>Checkout</span>
             </div>
           </div>
         </div>
@@ -66,24 +66,20 @@
             </h6>
           </div>
         </div>
-        <form action="{{route('createOrder', ['product' => $product, 'quantity' => $quantity])}}" class="checkout__form" method="POST">
-            @csrf
+        <form action="{{ route('customer.checkout')}}" method="POST" class="checkout-form">
+            {{csrf_field()}}
+            {{method_field('post')}}
           <div class="row">
             <div class="col-lg-8">
               <h5>Billing detail</h5>
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                   <div class="checkout__form__input">
-                    <p>First Name <span>*</span></p>
-                    <input type="text" name="first_name"/>
+                    <p>Name<span>*</span></p>
+                    <input type="text" name="name"/>
                   </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                  <div class="checkout__form__input">
-                    <p>Last Name <span>*</span></p>
-                    <input type="text" name="last_name"/>
-                  </div>
-                </div>
+
                 <div class="col-lg-12">
                   <div class="checkout__form__input">
                     <p>Country <span>*</span></p>
@@ -138,8 +134,8 @@
                 </div>
                 <div class="checkout__order__total">
                   <ul>
-                  <li>Subtotal <span>RM {{$quantity * $product->product_price}}</span></li>
-                    <li>Total <span>RM {{$quantity * $product->product_price}}</span></li>
+                  <li>Subtotal <span>RM {{$product->product_quantity * $product->product_price}}</span></li>
+                    {{-- <li>Total <span>RM {{$total}}</span></li> --}}
                   </ul>
                 </div>
 
