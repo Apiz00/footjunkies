@@ -25,7 +25,7 @@ class CartController extends Controller
         $product = Product::find($id);
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
-        $cart->add($product);
+        $cart->add($product, count($cart->items)+1);
         // dd($cart);
         $request->session()->put('cart', $cart);
         return redirect('/shop-cart');
