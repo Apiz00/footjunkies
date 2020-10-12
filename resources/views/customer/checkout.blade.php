@@ -123,7 +123,7 @@
                                     <span class="top__text__right">Total</span>
                                 </li>
                                 @foreach ($products as $product)
-                                <li> x{{$product['qty']}} {{$product['item']['product_name']}} <span>RM RM
+                                <li> x{{$product['qty']}} {{$product['item']['product_name']}} <span>RM
                                         {{$product['item']['product_price']}}</span></li>
 
                                 @endforeach

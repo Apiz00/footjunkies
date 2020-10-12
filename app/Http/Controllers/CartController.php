@@ -123,10 +123,10 @@ class CartController extends Controller
         $order->cart = json_encode($cart);
         $order->address = $request->input('address');
         $order->name = $request->input('name');
-        $shopid = $cart->items[1]['item']['shop_id'];
+        $shopid = current($cart->items)['item']['shop_id'];
         $totalPrice = 0;
         foreach ($cart->items as $item) {
-            $totalPriceOne = $item['qty'] * $item['item']->product_price;
+        $totalPriceOne = $item['qty'] * $item['item']->product_price;
             $totalPrice = $totalPriceOne + $totalPrice;
         }
         $order->total_price = $totalPrice;
@@ -138,7 +138,27 @@ class CartController extends Controller
         // Auth::user()->orders()->save($order);
         // dd(Auth::user()->orders());
 
+        return redirect('/receipt');
+    }
+
+    public function receipt() {
+
+        if (!Session::has('cart')) {
+            return view('customer.checkout');
+        }
+        $user = auth()->user();
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        $totalPrice = 0;
+        foreach ($cart->items as $item) {
+            $totalPriceOne = $item['qty'] * $item['item']->product_price;
+            $totalPrice = $totalPriceOne + $totalPrice;
+        }
+        $order = Order::latest()->first();
+        // dd($totalPrice);
+        // $cart->items->totalPrice = $totalPrice;
         Session::forget('cart');
-        return redirect('/');
+        return view('customer.receipt', ['products' => $cart->items, 'total' => $totalPrice, 'user' => $user, 'order' => $order]);
+
     }
 }

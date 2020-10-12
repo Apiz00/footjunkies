@@ -114,6 +114,7 @@ Route::get('/shop-cart', function () {
 });
 Route::get('/checkout', 'CartController@getCheckout');
 
+Route::get('/receipt', 'CartController@receipt');
 
 
 //shopping cart route for restaurant
