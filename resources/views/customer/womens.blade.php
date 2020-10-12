@@ -65,7 +65,7 @@
                   <div class="product__item">
                     <div
                       class="product__item__pic set-bg"
-                      data-setbg="img/shop/shop-m1.jpeg"
+                      data-setbg="{{$product->image_url}}"
                     >
                       <div class="label new">New</div>
                       <ul class="product__hover">

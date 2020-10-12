@@ -25,10 +25,11 @@ class CartController extends Controller
         $product = Product::find($id);
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
-        $cart->add($product, $product->id);
+        $cart->add($product);
         // dd($cart);
         $request->session()->put('cart', $cart);
         return redirect('/shop-cart');
+
     }
 
     public function getReduceByOne($id)
@@ -80,7 +81,23 @@ class CartController extends Controller
         }
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
-        return view('customer.shoppingcart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+        dd($cart->items);
+
+        $totalPrice = 0;
+        // dd(count($cart->items));
+        // if (count($cart->items) > 1) {
+            for ($i = 1; $i <= count($cart->items); $i++) {
+                // dd($cart->items[$i]['item']->product_price);
+                $totalPriceOne = $cart->items[$i]['qty'] * $cart->items[$i]['item']->product_price;
+                $totalPrice = $totalPriceOne + $totalPrice;
+            }
+        // } else {
+        //     $totalPriceOne = $cart->items['qty'] * $cart->items['item']->product_price;
+        //         $totalPrice = $totalPriceOne + $totalPrice;
+        // }
+        // dd($totalPrice);
+        $cart->totalPrice = $totalPrice;
+        return view('customer.shoppingcart', ['products' => $cart->items, 'totalPrice' => $totalPrice]);
     }
 
     public function getCheckout()
@@ -91,8 +108,15 @@ class CartController extends Controller
         $user = auth()->user();
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
-        $total = $cart->totalPrice;
-        return view('customer.checkout', ['total' => $total, 'user' => $user]);
+        $totalPrice = 0;
+        for ($i = 1; $i <= count($cart->items); $i++) {
+            // dd($cart->items[$i]['item']->product_price);
+            $totalPriceOne = $cart->items[$i]['qty'] * $cart->items[$i]['item']->product_price;
+            $totalPrice = $totalPriceOne + $totalPrice;
+        }
+        // dd($totalPrice);
+        // $cart->items->totalPrice = $totalPrice;
+        return view('customer.checkout', ['products' => $cart->items, 'total' => $totalPrice, 'user' => $user]);
     }
 
     public function postCheckout(Request $request, User $id)
@@ -107,13 +131,23 @@ class CartController extends Controller
         $order->cart = json_encode($cart);
         $order->address = $request->input('address');
         $order->name = $request->input('name');
+        $shopid = $cart->items[1]['item']['shop_id'];
+        $totalPrice = 0;
+        for ($i = 1; $i <= count($cart->items); $i++) {
+            // dd($cart->items[$i]['item']->product_price);
+            $totalPriceOne = $cart->items[$i]['qty'] * $cart->items[$i]['item']->product_price;
+            $totalPrice = $totalPriceOne + $totalPrice;
+        }
+        $order->total_price = $totalPrice;
+        $order->user_id = auth()->user()->id;
+        $order->shop_id = $shopid;
         // $order->user_id = Auth::user()->id;
-
+        $order->save();
         // Auth::user()->orders()->save($order);
-        Auth::user()->orders()->save($order);
+        // Auth::user()->orders()->save($order);
         // dd(Auth::user()->orders());
 
         Session::forget('cart');
-        return redirect('/receipt');
+        return redirect('/');
     }
 }

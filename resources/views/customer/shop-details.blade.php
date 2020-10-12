@@ -62,7 +62,7 @@
             <div class="shop__sidebar ">
               <div class="sidebar__categories">
                 <div class="section-title">
-                  <h4>Puma</h4>
+                <h4>{{$shop->shop_name}}</h4>
                 </div>
                 <div class="categories__accordion">
                   <div class="accordion" id="accordionExample">
@@ -70,14 +70,14 @@
                       <div class="card-heading active">
                         <div
                         class="product__item__pic_shop set-bg"
-                        data-setbg="img/shop/shop-l4.jpeg"
+                        data-setbg="{{$shop->image_url}}"
                       >
 
                       </div>
                       <div class="card-text m-3">
-                        <h5 class="text-center m-3">Email Address: <br> <p class="text-center m-3">test@gmail.com</p></h5>
-                        <h5 class="text-center m-3">Address: <br> <p class="text-center m-3">275 Payne Street, Meadows Of Dan,VA, Virginia ,24120</p></h5>
-                        <h5 class="text-center m-3">Description: <br> <p class="text-center m-3">Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design</p></h5>
+                      <h5 class="text-center m-3">Email Address: <br> <p class="text-center m-3">{{$shop->user->email}}</p></h5>
+                        <h5 class="text-center m-3">Address: <br> <p class="text-center m-3">{{$shop->shop_location}}</p></h5>
+                        <h5 class="text-center m-3">Description: <br> <p class="text-center m-3">{{$shop->description}}</p></h5>
 
 
                     </div>
@@ -93,307 +93,42 @@
           </div>
           <div class="col-lg-9 col-md-9">
             <div class="row">
-              <div class="col-lg-4 col-md-6">
-                <div class="product__item">
-                  <div
-                    class="product__item__pic set-bg"
-                    data-setbg="img/shop/shop-m1.jpeg"
-                  >
-                    <div class="label new">New</div>
-                    <ul class="product__hover">
-                      <li>
-                        <a href="img/shop/shop-m1.jpeg" class="image-popup"
-                          ><span class="arrow_expand"></span
-                        ></a>
-                      </li>
-                      <li>
-                        <a href="#"><span class="icon_heart_alt"></span></a>
-                      </li>
-                      <li>
-                        <a href="#"><span class="icon_bag_alt"></span></a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="product__item__text">
-                    <h6><a href="#">Furry hooded parka</a></h6>
-                    <div class="rating">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
+                @foreach ($products as $product)
+                <div class="col-lg-3 col-md-6">
+                  <div class="product__item">
+                    <div
+                      class="product__item__pic set-bg"
+                  data-setbg="{{$product->image_url}}"
+                    >
+                      <div class="label new">New</div>
+                      <ul class="product__hover">
+                        <li>
+                          <a href="img/shop/shop-m1.jpeg" class="image-popup"
+                            ><span class="arrow_expand"></span
+                          ></a>
+                        </li>
+                        <li>
+                          <a href="#"><span class="icon_heart_alt"></span></a>
+                        </li>
+                        <li>
+                          <a href="#"><span class="icon_bag_alt"></span></a>
+                        </li>
+                      </ul>
                     </div>
-                    <div class="product__price">$ 59.0</div>
+                    <div class="product__item__text">
+                      <h6><a href="{{'/product/show/'.$product->id}}">{{$product->product_name}}</a></h6>
+                      <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                      </div>
+                    <div class="product__price">RM {{$product->product_price}}</div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="product__item">
-                  <div
-                    class="product__item__pic set-bg"
-                    data-setbg="img/shop/shop-m2.jpeg"
-                  >
-                    <ul class="product__hover">
-                      <li>
-                        <a href="img/shop/shop-m2.jpeg" class="image-popup"
-                          ><span class="arrow_expand"></span
-                        ></a>
-                      </li>
-                      <li>
-                        <a href="#"><span class="icon_heart_alt"></span></a>
-                      </li>
-                      <li>
-                        <a href="#"><span class="icon_bag_alt"></span></a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="product__item__text">
-                    <h6><a href="#">Flowy striped skirt</a></h6>
-                    <div class="rating">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <div class="product__price">$ 49.0</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="product__item">
-                  <div
-                    class="product__item__pic set-bg"
-                    data-setbg="img/shop/shop-m3.jpeg"
-                  >
-                    <ul class="product__hover">
-                      <li>
-                        <a href="img/shop/shop-m3.jpeg" class="image-popup"
-                          ><span class="arrow_expand"></span
-                        ></a>
-                      </li>
-                      <li>
-                        <a href="#"><span class="icon_heart_alt"></span></a>
-                      </li>
-                      <li>
-                        <a href="#"><span class="icon_bag_alt"></span></a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="product__item__text">
-                    <h6><a href="#">Croc-effect bag</a></h6>
-                    <div class="rating">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <div class="product__price">$ 59.0</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="product__item">
-                  <div
-                    class="product__item__pic set-bg"
-                    data-setbg="img/shop/shop-m4.jpeg"
-                  >
-                    <ul class="product__hover">
-                      <li>
-                        <a href="img/shop/shop-m4.jpeg" class="image-popup"
-                          ><span class="arrow_expand"></span
-                        ></a>
-                      </li>
-                      <li>
-                        <a href="#"><span class="icon_heart_alt"></span></a>
-                      </li>
-                      <li>
-                        <a href="#"><span class="icon_bag_alt"></span></a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="product__item__text">
-                    <h6><a href="#">Dark wash Xavi jeans</a></h6>
-                    <div class="rating">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <div class="product__price">$ 59.0</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="product__item sale">
-                  <div
-                    class="product__item__pic set-bg"
-                    data-setbg="img/shop/shop-m5.jpeg"
-                  >
-                    <div class="label">Sale</div>
-                    <ul class="product__hover">
-                      <li>
-                        <a href="img/shop/shop-m5.jpeg" class="image-popup"
-                          ><span class="arrow_expand"></span
-                        ></a>
-                      </li>
-                      <li>
-                        <a href="#"><span class="icon_heart_alt"></span></a>
-                      </li>
-                      <li>
-                        <a href="#"><span class="icon_bag_alt"></span></a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="product__item__text">
-                    <h6><a href="#">Ankle-cuff sandals</a></h6>
-                    <div class="rating">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <div class="product__price">$ 49.0 <span>$ 59.0</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="product__item">
-                  <div
-                    class="product__item__pic set-bg"
-                    data-setbg="img/shop/shop-m6.jpeg"
-                  >
-                    <ul class="product__hover">
-                      <li>
-                        <a href="img/shop/shop-m6.jpeg" class="image-popup"
-                          ><span class="arrow_expand"></span
-                        ></a>
-                      </li>
-                      <li>
-                        <a href="#"><span class="icon_heart_alt"></span></a>
-                      </li>
-                      <li>
-                        <a href="#"><span class="icon_bag_alt"></span></a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="product__item__text">
-                    <h6><a href="#">Contrasting sunglasses</a></h6>
-                    <div class="rating">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <div class="product__price">$ 59.0</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="product__item">
-                  <div
-                    class="product__item__pic set-bg"
-                    data-setbg="img/shop/shop-m7.jpeg"
-                  >
-                    <ul class="product__hover">
-                      <li>
-                        <a href="img/shop/shop-m7.jpeg" class="image-popup"
-                          ><span class="arrow_expand"></span
-                        ></a>
-                      </li>
-                      <li>
-                        <a href="#"><span class="icon_heart_alt"></span></a>
-                      </li>
-                      <li>
-                        <a href="#"><span class="icon_bag_alt"></span></a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="product__item__text">
-                    <h6><a href="#">Circular pendant earrings</a></h6>
-                    <div class="rating">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <div class="product__price">$ 59.0</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="product__item">
-                  <div
-                    class="product__item__pic set-bg"
-                    data-setbg="img/shop/shop-m8.jpeg"
-                  >
-                    <div class="label stockout stockblue">Out Of Stock</div>
-                    <ul class="product__hover">
-                      <li>
-                        <a href="img/shop/shop-m8.jpeg" class="image-popup"
-                          ><span class="arrow_expand"></span
-                        ></a>
-                      </li>
-                      <li>
-                        <a href="#"><span class="icon_heart_alt"></span></a>
-                      </li>
-                      <li>
-                        <a href="#"><span class="icon_bag_alt"></span></a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="product__item__text">
-                    <h6><a href="#">Cotton T-Shirt</a></h6>
-                    <div class="rating">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <div class="product__price">$ 59.0</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="product__item sale">
-                  <div
-                    class="product__item__pic set-bg"
-                    data-setbg="img/shop/shop-m9.jpeg"
-                  >
-                    <div class="label">Sale</div>
-                    <ul class="product__hover">
-                      <li>
-                        <a href="img/shop/shop-m9.jpeg" class="image-popup"
-                          ><span class="arrow_expand"></span
-                        ></a>
-                      </li>
-                      <li>
-                        <a href="#"><span class="icon_heart_alt"></span></a>
-                      </li>
-                      <li>
-                        <a href="#"><span class="icon_bag_alt"></span></a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="product__item__text">
-                    <h6><a href="#">Water resistant zips backpack</a></h6>
-                    <div class="rating">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <div class="product__price">$ 49.0 <span>$ 59.0</span></div>
-                  </div>
-                </div>
-              </div>
+                @endforeach
               <div class="col-lg-12 text-center">
                 <div class="pagination__option">
                   <a href="#">1</a>

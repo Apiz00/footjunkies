@@ -19,6 +19,7 @@ class CreateShopsTable extends Migration
             $table->string('shop_location');
             $table->bigInteger('shop_phone_number');
             $table->bigInteger('shop_ssm_reg_no');
+            $table->string('image_url', 80)->nullable();
             $table->string('description')->nullable();
             $table->foreignId('user_id')->default(9999999);
             $table->foreign('user_id')->references('id')->on('users');

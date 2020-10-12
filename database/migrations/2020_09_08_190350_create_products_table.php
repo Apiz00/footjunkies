@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->string('product_brand')->nullable();
             $table->bigInteger('product_quantity');
             $table->string('product_location');
+            $table->string('image_url', 80)->nullable();
             $table->foreignId('shop_id')->default(9999999);
             $table->foreign('shop_id')->references('id')->on('shops');
             $table->timestamps();

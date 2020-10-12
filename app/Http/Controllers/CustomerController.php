@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Order;
 use App\User;
+use App\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,6 +36,24 @@ class CustomerController extends Controller
         return view('customer.accesories', ['accesoriesproducts' => $accesories]);
     }
 
+    public function shops()
+    {
+        $shops = Shop::all();
+        return view('customer.shop', ['shops' => $shops]);
+    }
+
+    public function shop($shopid) {
+        $shop = Shop::findOrFail($shopid);
+        $products = Product::where('shop_id', $shop->id)->get();
+        return view('customer.shop-details', ['shop' => $shop, 'products' => $products]);
+    }
+
+    public function searchShop(Request $request) {
+        $shops = Shop::query()->where('shop_name', 'LIKE', '%' . $request->searchshop . '%')->get();
+
+        return view('customer.shop', ['shops' => $shops]);
+    }
+
     public function showProduct($productid)
     {
         $product = Product::findOrFail($productid);
@@ -46,6 +65,10 @@ class CustomerController extends Controller
         $product = Product::findOrFail($productid);
         $quantity = $request->quantity;
         return view('customer.checkout', ['product' => $product, 'quantity' => $quantity]);
+    }
+
+    public function checkout() {
+        return view('customer.checkout');
     }
 
     public function createOrder(Request $request, $product, $quantity)

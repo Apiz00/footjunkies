@@ -23,6 +23,8 @@ class CreateOrdersTable extends Migration
             $table->double('rating')->nullable();
             $table->text('comment')->nullable();
             $table->double('table')->nullable();
+            $table->double('total_price')->nullable();
+            $table->integer('shop_id')->nullable();
             $table->unsignedInteger('user_id')->default(9999999);
         });
     }

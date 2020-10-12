@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Shop;
 use App\Product;
 use App\Order;
+use Illuminate\Support\Facades\Storage;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,13 @@ class ManagerController extends Controller
     }
     public function notifications()
     {
-        return view('manager.notifications');
+        $product = '';
+        return view('manager.search', ['product' => $product]);
+    }
+
+    public function postSearch(Request $request) {
+        $product = Product::where('product_id', $request->search)->first();
+        return view('manager.search', ['product' => $product]);
     }
 
     public function shop()
@@ -64,13 +71,22 @@ class ManagerController extends Controller
 
     public function createStore(Request $request)
     {
-        $store = Shop::create([
-            'shop_name' => $request->shopname,
-            'shop_location' => $request->shoplocation,
-            'shop_phone_number' => $request->shopphonenumber,
-            'shop_ssm_reg_no' => $request->shopssmno,
-            'user_id' => Auth::user()->id
+        $validated = $request->validate([
+            'shopname' => 'string|max:40',
+            'image' => 'mimes:jpeg,png|max:1014',
         ]);
+        $extension = $request->image->extension();
+        $request->image->storeAs('/public', $validated['shopname'].".".$extension);
+        $url = Storage::url($validated['shopname'].".".$extension);
+
+        $store = new Shop;
+        $store->shop_name = $request->shopname;
+        $store->shop_location = $request->shoplocation;
+        $store->shop_phone_number = $request->shopphonenumber;
+        $store->shop_ssm_reg_no = $request->shopssmno;
+        $store->image_url = $url;
+        $store->user_id = Auth::user()->id;
+        $store->save();
 
         return redirect('/manager');
     }
@@ -104,19 +120,28 @@ class ManagerController extends Controller
 
     public function productcreate(Request $request)
     {
-
-        $store = Product::create([
-            'product_id' => $request->productid,
-            'product_name' => $request->product_name,
-            'product_category' => $request->product_category,
-            'product_brand' => $request->product_brand,
-            'product_quantity' => $request->product_quantity,
-            'product_color' => $request->product_color,
-            'product_location' => $request->product_location,
-            'product_price' => $request->product_price,
-            'product_description' => $request->product_description,
-            'shop_id' => auth()->user()->shop->id
+        $validated = $request->validate([
+            'product_name' => 'string|max:40',
+            'image' => 'mimes:jpeg,png|max:1014',
         ]);
+        $extension = $request->image->extension();
+        $request->image->storeAs('/public', str_replace(' ','', $validated['product_name']).".".$extension);
+        $url = Storage::url(str_replace(' ','', $validated['product_name']).".".$extension);
+
+        $product = new Product;
+
+        $product->product_id = $request->productid;
+        $product->product_name = $request->product_name;
+        $product->product_category = $request->product_category;
+        $product->product_brand = $request->product_brand;
+        $product->product_quantity = $request->product_quantity;
+        $product->product_color = $request->product_color;
+        $product->product_location = $request->product_location;
+        $product->product_price = $request->product_price;
+        $product->image_url = $url;
+        $product->product_description = $request->product_description;
+        $product->shop_id = auth()->user()->shop->id;
+        $product->save();
 
         return redirect('/manager/product');
     }
@@ -133,6 +158,22 @@ class ManagerController extends Controller
     {
         $product = Product::findOrFail($productid);
         $product->product_quantity = $request->quantity;
+        $product->save();
+
+        return back();
+    }
+
+    public function decrementQty($productid) {
+        $product = Product::findOrFail($productid);
+        $product->product_quantity = $product->product_quantity - 1;
+        $product->save();
+
+        return back();
+    }
+
+    public function incrementQty($productid) {
+        $product = Product::findOrFail($productid);
+        $product->product_quantity = $product->product_quantity + 1;
         $product->save();
 
         return back();

@@ -45,13 +45,17 @@ Route::get('/manager/customer', 'ManagerController@customer')->name('customer')-
 Route::get('/manager/tasks', 'TasksController@index')->name('tasks')->middleware('manager');
 Route::post('/manager/task/store', 'TasksController@store')->name('tasks')->middleware('manager');
 Route::delete('/manager/task/delete/{task}', 'TasksController@destroy')->name('tasks')->middleware('manager');
-Route::get('/manager/notifications', 'ManagerController@notifications')->name('notifications')->middleware('manager');
+Route::get('/manager/search', 'ManagerController@notifications')->name('notifications')->middleware('manager');
+Route::post('/manager/search/product', 'ManagerController@postSearch')->name('notifications')->middleware('manager');
 Route::get('/manager/product/create', 'ManagerController@productcreateshow')->name('productcreateshow')->middleware('manager');
 Route::post('/manager/product/create', 'ManagerController@productcreate')->name('productcreate')->middleware('manager');
 Route::post('/manager/product/update/{product}', 'ProductController@update')->name('productupdate')->middleware('manager');
 Route::post('/manager/product/delete/{productid}', 'ManagerController@productDelete')->name('productdelete')->middleware('manager');
 Route::get('/manager/product', 'ManagerController@product')->name('product')->middleware('manager');
 Route::post('/manager/{productid}/update/quantity', 'ManagerController@updateQuantity')->middleware('manager');
+Route::post('/manager/product/decrement/{productid}', 'ManagerController@decrementQty')->middleware('manager');
+Route::post('/manager/product/increment/{productid}', 'ManagerController@incrementQty')->middleware('manager');
+
 Route::get('/manager/shop', 'ManagerController@shop')->name('shop')->middleware('manager');
 Route::get('/manager/order', 'ManagerController@order')->name('stock')->middleware('manager');
 Route::post('/manager/order/fulfilled/{orderid}', 'ManagerController@fulfillOrder')->middleware('manager');
@@ -68,6 +72,7 @@ Route::post('/manager/update/{storeid}', 'ManagerController@updateInfo')->name('
 
 Route::get('/customer', 'CustomerController@index')->name('customer')->middleware('customer');
 
+Route::post('/shop/search', 'CustomerController@searchShop');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -88,9 +93,8 @@ Route::get('/contact', 'CustomerController@showUserMessage')->middleware('auth')
 Route::post('/customer/contact', 'NotificationController@storeUserMessage')->middleware('auth');
 Route::get('/wishlist', 'CartController@index');
 
-Route::get('/shop', function () {
-    return view('/customer/shop');
-});
+Route::get('/shop', 'CustomerController@shops');
+Route::get('/shop/{shopid}', 'CustomerController@shop');
 
 Route::get('/orderstracking', function () {
     return view('/customer/orderstracking');
@@ -108,9 +112,7 @@ Route::get('/login-vendor', function () {
 Route::get('/shop-cart', function () {
     return view('/customer/shop-cart');
 });
-Route::get('/checkout', function () {
-    return view('/customer/checkout');
-});
+Route::get('/checkout', 'CartController@getCheckout');
 
 
 

@@ -123,14 +123,14 @@
                                         @foreach ($orders as $order)
                                         <tr>
                                             <td>{{$order->id}}</td>
-                                            <td>{{$order->first_name.' '.$order->last_name}}</td>
+                                            <td>{{$order->name}}</td>
                                             <td>{{$order->address}}</td>
                                             @if ($order->fulfillment_status)
                                             <td>Fulfilled</td>
                                             @else
                                             <td>Unfulfilled</td>
                                             @endif
-                                            <td class="text-primary">{{$order->price}}</td>
+                                            <td class="text-primary">{{$order->total_price}}</td>
                                             <td>
                                                 <i class="material-icons" data-toggle="modal"
                                                     data-target="#exampleModal3" style="cursor: pointer">visibility</i>

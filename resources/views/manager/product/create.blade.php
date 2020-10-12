@@ -166,19 +166,7 @@
                                     <div class="row m-1">
                                         <div class="col-md-4">
 
-                                                <label for="image">Product Image 1:</label>
-                                                <input type="file" id="image" name="image"><br><br>
-
-                                        </div>
-                                        <div class="col-md-4">
-
-                                                <label for="image">Product Image 2:</label>
-                                                <input type="file" id="image" name="image"><br><br>
-
-                                        </div>
-                                        <div class="col-md-4">
-
-                                                <label for="image">Product Image 3:</label>
+                                                <label for="image">Product Image:</label>
                                                 <input type="file" id="image" name="image"><br><br>
 
                                         </div>

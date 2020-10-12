@@ -135,8 +135,8 @@
                       <p>Task List</p>
                     </a>
                   </li>
-                  <li class="{{ Request::is( 'manager/notifications') ? "active":"" }}">
-                    <a class="nav-link" href="/manager/notifications">
+                  <li class="{{ Request::is( 'manager/search') ? "active":"" }}">
+                    <a class="nav-link" href="/manager/search">
                       <i class="material-icons">notifications</i>
                       <p>Search Products</p>
                     </a>

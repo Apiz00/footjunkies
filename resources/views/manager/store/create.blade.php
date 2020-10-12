@@ -74,7 +74,7 @@
     <h3 class="text-center mt-5">Registeration for Vendor.</h3>
     <br>
     <h6 class="text-center">Click Sign Up!</h6>
-    <form action="/register/store" method="POST">
+    <form action="/register/store" method="POST" enctype="multipart/form-data">
         @csrf
 
     <!-- Form Section Begin -->
@@ -100,6 +100,7 @@
               <label for="user" class="label">Shop Name:</label>
               <input id="user" name="shopname"  type="text" class="input" />
             </div>
+
             <div class="group">
               <label for="pass" class="label">Address:</label>
               <input
@@ -123,6 +124,10 @@
             <div class="group">
               <label for="pass" class="label">SSM Register Number</label>
               <input id="pass" name="shopssmno" type="text" class="input" />
+            </div>
+            <div class="form-group">
+                <label for="image">Choose Image</label>
+                <input id="image" type="file" name="image">
             </div>
             <div class="group">
                 <input type="submit" class="button" value="Sign Up" />
