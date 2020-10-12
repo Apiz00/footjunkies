@@ -154,7 +154,7 @@
                     <div class="col-md-8">
                       <div class="form-group">
                         <label class="bmd-label-floating">Position</label>
-                        <input type="text" class="form-control" name="position"/>
+                      <input type="text" value="{{auth()->user()->position}}" class="form-control" name="position"/>
                       </div>
                     </div>
                     {{-- <div class="col-md-4">

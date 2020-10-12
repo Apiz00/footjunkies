@@ -123,7 +123,7 @@
                                                 <label class="bmd-label-floating">
                                                     Lamborghini Mercy, Your chick she so thirsty,
                                                     I'm in that two seat Lambo.</label>
-                                                <textarea class="form-control" rows="5" name="description"></textarea>
+                                                <textarea class="form-control" rows="5" name="description" value="{{auth()->user()->shop->description}}"></textarea>
                                             </div>
                                         </div>
                                     </div>

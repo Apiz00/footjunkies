@@ -50,6 +50,7 @@ class ManagerController extends Controller
         $user = auth()->user();
         $user->name = $request->username;
         $user->email = $request->email;
+        $user->position = $request->position;
 
         $user->save();
 
@@ -81,6 +82,7 @@ class ManagerController extends Controller
 
         $shop->shop_name = $request->shop_name;
         $shop->shop_location = $request->shop_location;
+        $shop->description = $request->description;
         $shop->save();
 
         $user->email = $request->email;
