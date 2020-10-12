@@ -87,6 +87,8 @@ class CartController extends Controller
         foreach ($cart->items as $item) {
             $totalPriceOne = $item['qty'] * $item['item']->product_price;
             $totalPrice = $totalPriceOne + $totalPrice;
+
+
         }
 
         $cart->totalPrice = $totalPrice;
@@ -105,6 +107,8 @@ class CartController extends Controller
         foreach ($cart->items as $item) {
             $totalPriceOne = $item['qty'] * $item['item']->product_price;
             $totalPrice = $totalPriceOne + $totalPrice;
+
+
         }
         // dd($totalPrice);
         // $cart->items->totalPrice = $totalPrice;
@@ -128,6 +132,9 @@ class CartController extends Controller
         foreach ($cart->items as $item) {
         $totalPriceOne = $item['qty'] * $item['item']->product_price;
             $totalPrice = $totalPriceOne + $totalPrice;
+            $product = Product::findOrFail($item['item']->id);
+            $product->product_quantity = $product->product_quantity - $item['qty'];
+            $product->save();
         }
         $order->total_price = $totalPrice;
         $order->user_id = auth()->user()->id;

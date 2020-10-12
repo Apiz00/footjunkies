@@ -22,6 +22,7 @@ class CreateOrdersTable extends Migration
             $table->string('name');
             $table->double('rating')->nullable();
             $table->text('comment')->nullable();
+            $table->boolean('fulfillment_status')->default(0);
             $table->double('table')->nullable();
             $table->double('total_price')->nullable();
             $table->integer('shop_id')->nullable();
