@@ -58,7 +58,7 @@
         <div class="row">
 
         </div>
-        <form action="{{ route('customer.checkout')}}" method="POST" class="checkout-form">
+        <form action="/invoice" method="POST" class="checkout-form">
             {{csrf_field()}}
             {{method_field('post')}}
             <div class="row">

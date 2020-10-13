@@ -112,9 +112,8 @@ Route::get('/login-vendor', function () {
 Route::get('/shop-cart', function () {
     return view('/customer/shop-cart');
 });
-Route::get('/checkout', 'CartController@getCheckout');
 
-Route::get('/receipt', 'CartController@receipt');
+Route::post('/receipt', 'CartController@receipt');
 
 
 //shopping cart route for restaurant
@@ -144,14 +143,15 @@ Route::get('/remove/{id}', [
 // checkout route for shopping cart restaurant
 Route::get('/checkout', [
     'uses' => 'CartController@getCheckout',
-    'as' => 'customer.checkout'
 ]);
 
 Route::post('/checkout', [
-    'uses' => 'CartController@PostCheckout',
+    'uses' => 'CartController@postCheckout',
     'as' => 'customer.checkout'
 ]);
 
 Route::post('/checkout/individual/{product}/{quantity}', [
     'uses' => 'CustomerController@createOrder',
 ]);
+
+Route::post('/invoice', 'CartController@invoice');

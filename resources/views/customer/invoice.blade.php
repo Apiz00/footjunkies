@@ -120,9 +120,11 @@
                     <br>
                     <br>
                     <h6 class="text-center">Are You Confirm?</span></h6>
-                    <a href="#" class="primary-btn m-5 w-20"
-                >Confirm</a
-              >
+                    <form action="/receipt" method="POST">
+                        @csrf
+                        <button type="submit" class="primary-btn m-5 w-20"
+                    >Confirm</button>
+                    </form>
                 </div>
             </div>
         </div>
