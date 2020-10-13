@@ -151,3 +151,7 @@ Route::post('/checkout', [
     'uses' => 'CartController@PostCheckout',
     'as' => 'customer.checkout'
 ]);
+
+Route::post('/checkout/individual/{product}/{quantity}', [
+    'uses' => 'CustomerController@createOrder',
+]);

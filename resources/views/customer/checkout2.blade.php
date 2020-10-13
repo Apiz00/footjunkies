@@ -66,7 +66,7 @@
             </h6>
           </div>
         </div>
-        <form action="{{ route('customer.checkout2')}}" method="POST" class="checkout-form">
+        <form action="{{'/checkout/individual/'.$product->id.'/'.$quantity}}" method="POST" class="checkout-form">
             {{csrf_field()}}
             {{method_field('post')}}
           <div class="row">
@@ -134,8 +134,8 @@
                 </div>
                 <div class="checkout__order__total">
                   <ul>
-                  <li>Subtotal <span>RM {{$quantity * $product->product_price}}</span></li>
-                    <li>Total <span>RM {{$quantity * $product->product_price}}</span></li>
+                  <li>Subtotal <span>RM {{$product->product_price}}</span></li>
+                    {{-- <li>Total <span>RM {{$total}}</span></li> --}}
                   </ul>
                 </div>
 

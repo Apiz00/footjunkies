@@ -64,7 +64,7 @@ class CustomerController extends Controller
     {
         $product = Product::findOrFail($productid);
         $quantity = $request->quantity;
-        return view('customer.checkout', ['product' => $product, 'quantity' => $quantity]);
+        return view('customer.checkout2', ['product' => $product, 'quantity' => $quantity]);
     }
 
     public function checkout() {

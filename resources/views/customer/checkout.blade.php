@@ -52,6 +52,7 @@
 <!-- Breadcrumb End -->
 
 <!-- Checkout Section Begin -->
+@isset ($products)
 <section class="checkout spad">
     <div class="container">
         <div class="row">
@@ -143,6 +144,10 @@
         </form>
     </div>
 </section>
+@endisset
+
+
+
 <!-- Checkout Section End -->
     <!-- Footer Section Begin -->
     <footer class="footer">

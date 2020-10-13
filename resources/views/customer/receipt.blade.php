@@ -52,6 +52,7 @@
 <!-- Breadcrumb End -->
 
 <!-- Shop Cart Section Begin -->
+@if (count($products))
 <section class="shop-cart spad">
     <h2 class="text-center m-5">Receipt</h2>
     <div class="container">
@@ -129,6 +130,10 @@
         </div>
     </div>
 </section>
+
+@else
+<p>No product purchased</p>
+@endif
 <!-- Shop Cart Section End -->
 
   <!-- Footer Section Begin -->

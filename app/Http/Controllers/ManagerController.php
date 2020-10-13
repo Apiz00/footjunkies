@@ -138,6 +138,7 @@ class ManagerController extends Controller
         $product->product_color = $request->product_color;
         $product->product_location = $request->product_location;
         $product->product_price = $request->product_price;
+        $product->product_size = $request->product_size;
         $product->image_url = $url;
         $product->product_description = $request->product_description;
         $product->shop_id = auth()->user()->shop->id;
