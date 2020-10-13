@@ -98,12 +98,12 @@
                                                 value="{{auth()->user()->shop->shop_location}}" />
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    {{-- <div class="col-md-4">
                                         <form action="/action_page.php">
                                             <label for="image">Product Image:</label>
                                             <input required type="file" id="image" name="image"><br><br>
                                         </form>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -128,14 +128,17 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card card-profile">
-                        <div class="card-avatar" style="border-radius: 0px !important">
+                        {{-- <div class="card-avatar" style="border-radius: 0px !important">
                             <a href="javascript:;">
                                 <img class="img" src="../assets/img/faces/marc.jpg" />
                             </a>
-                        </div>
+                        </div> --}}
                         <div class="card-body">
                             <h5 class="card-category text-gray">{{auth()->user()->email}}</h5>
                             <h4 class="card-title">{{auth()->user()->shop->shop_name}}</h4>
+                            <p class="card-description">
+                                {{auth()->user()->shop->address}}
+                            </p>
                             <p class="card-description">
                                 {{auth()->user()->shop->description}}
                             </p>

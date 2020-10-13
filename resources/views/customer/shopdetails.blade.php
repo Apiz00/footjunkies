@@ -65,7 +65,7 @@
     <section class="shop spad">
       <div class="container">
         <div class="row">
-          <div class="col-lg-3 col-md-3">
+          <div class="col-lg-4 col-md-4">
             <div class="shop__sidebar">
               <div class="sidebar__categories">
                 <div class="section-title">
@@ -102,11 +102,11 @@
 
             </div>
           </div>
-          <div class="col-lg-9 col-md-9">
+          <div class="col-lg-8 col-md-8">
             <div class="row">
                 <div class="row">
                     @foreach ($mensproducts as $product)
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-6">
                       <div class="product__item">
                         <div
                           class="product__item__pic set-bg"

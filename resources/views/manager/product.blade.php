@@ -253,8 +253,8 @@
                                             </td>
                                             <td class="text-primary">RM {{$product->product_price}}</td>
                                             <td>
-                                                <i class="material-icons" data-toggle="modal"
-                                                    data-target="#exampleModal3" style="cursor: pointer">visibility</i>
+                                                {{-- <i class="material-icons" data-toggle="modal"
+                                                    data-target="#exampleModal3" style="cursor: pointer">visibility</i> --}}
                                                 <i class="material-icons" data-toggle="modal"
                                                     data-target="#exampleModal4" style="cursor: pointer">tune</i>
 
@@ -369,14 +369,14 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="row">
+                                                            {{-- <div class="row">
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label for="image">Product Image:</label>
                                                                      <input type="file" id="image" name="image"><br><br>
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            </div> --}}
 
 
                                                             <div class="row">

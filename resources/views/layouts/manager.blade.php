@@ -131,13 +131,13 @@
                   </li>
                   <li class="{{ Request::is( 'manager/tasks') ? "active":"" }}">
                     <a class="nav-link" href="/manager/tasks">
-                      <i class="material-icons">plagiarism</i>
+                      <i class="material-icons">list_alt</i>
                       <p>Task List</p>
                     </a>
                   </li>
                   <li class="{{ Request::is( 'manager/search') ? "active":"" }}">
                     <a class="nav-link" href="/manager/search">
-                      <i class="material-icons">notifications</i>
+                      <i class="material-icons">plagiarism</i>
                       <p>Search Products</p>
                     </a>
                   </li>

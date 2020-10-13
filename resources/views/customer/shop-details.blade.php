@@ -92,9 +92,9 @@
             </div>
           </div>
           <div class="col-lg-9 col-md-9">
-            <div class="row">
+            <div class="row ml-3" style="margin-top:3.6rem;">
                 @foreach ($products as $product)
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6">
                   <div class="product__item">
                     <div
                       class="product__item__pic set-bg"

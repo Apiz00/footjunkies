@@ -173,6 +173,7 @@
                              {{$task->description}}
                             </td>
                             @endforeach
+
                         </tr>
                     </tbody>
                   </table>

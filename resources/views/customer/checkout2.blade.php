@@ -58,26 +58,24 @@
     <!-- Checkout Section Begin -->
     <section class="checkout spad">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <h6 class="coupon__link">
-              <span class="icon_tag_alt"></span>
-              <a href="#">Have a coupon?</a> Click here to enter your code.
-            </h6>
-          </div>
-        </div>
         <form action="{{'/checkout/individual/'.$product->id.'/'.$quantity}}" method="POST" class="checkout-form">
             {{csrf_field()}}
             {{method_field('post')}}
           <div class="row">
             <div class="col-lg-8">
-              <h5>Billing detail</h5>
+                <h5>Billing & Payment Details</h5>
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
-                  <div class="checkout__form__input">
-                    <p>Name<span>*</span></p>
-                    <input type="text" name="name"/>
-                  </div>
+                    <div class="checkout__form__input">
+                        <p>Name<span>*</span></p>
+                        <input required type="text" name="name" value="{{auth()->user()->name}}" />
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="checkout__form__input">
+                        <p>Email <span>*</span></p>
+                        <input required type="text" name="email" value="{{auth()->user()->email}}"  />
+                    </div>
                 </div>
 
                 <div class="col-lg-12">
@@ -101,22 +99,20 @@
                     <p>Country/State <span>*</span></p>
                     <input type="text" name="state"/>
                   </div>
-                  <div class="checkout__form__input">
-                    <p>Postcode/Zip <span>*</span></p>
-                    <input type="text" name="postcode"/>
-                  </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
-                  <div class="checkout__form__input">
-                    <p>Phone <span>*</span></p>
-                    <input type="text" name="phone"/>
-                  </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                  <div class="checkout__form__input">
-                    <p>Email <span>*</span></p>
-                    <input type="text" name="email"/>
-                  </div>
+                    <div class="checkout__form__input">
+                        <p>Card Number <span>*</span></p>
+                        <input required type="text" name="phone" />
+                    </div>
+                    <div class="checkout__form__input">
+                        <p>CVV Code <span>*</span></p>
+                        <input required type="text" name="postcode" />
+                    </div>
+                    <div class="checkout__form__input">
+                        <p>Expiry Date <span>*</span></p>
+                        <input required type="date" name="date" />
+                    </div>
                 </div>
               </div>
             </div>
