@@ -55,8 +55,10 @@
     </div>
     <!-- Breadcrumb End -->
 
+
     <!-- Shop Cart Section Begin -->
     <section class="shop-cart spad">
+        @if(Session::has('cart'))
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -72,108 +74,40 @@
                   </tr>
                 </thead>
 
-                {{-- <tbody>
+                <tbody>
+                    @foreach($products as $product)
+                    <cart :product={{json_encode($product)}} inline-template>
                   <tr>
                     <td class="cart__product__item">
                       <img src="img/shop-cart/cp-1.jpg" alt="" />
                       <div class="cart__product__item__title">
-                      <h6>{{$product['item']['name']}}</h6>
-                        <div class="rating">
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                        </div>
+                      <h6>{{$product['item']['product_name']}}</h6>
                       </div>
                     </td>
-                    <td class="cart__price">$ 150.0</td>
+                    <td class="cart__price">RM {{$product['item']['product_price']}}</td>
                     <td class="cart__quantity">
-                      <div class="pro-qty">
-                        <input type="text" value="1" />
-                      </div>
+                        <span class="badge">x{{$product['qty']}}</span>
                     </td>
                     <td class="cart__total">$ 300.0</td>
                     <td class="cart__close">
                       <span class="icon_close"></span>
                     </td>
-                  </tr>
-                  <tr>
-                    <td class="cart__product__item">
-                      <img src="img/shop-cart/cp-2.jpg" alt="" />
-                      <div class="cart__product__item__title">
-                        <h6>Zip-pockets pebbled tote briefcase</h6>
-                        <div class="rating">
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
+                    <td>
+                        <div class="dropdown" style="float: right">
+                            <button type="button" class="btn btn-secondary btn-sm btn xs dropdown-toggle" data-toggle="dropdown">Edit <span class="caret"></span></button>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="{{route('Restaurant.increaseByOne', ['id' => $product['item']['id']])}}">+</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{route('Restaurant.reduceByOne', ['id' => $product['item']['id']])}}">-</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{route('Restaurant.remove', ['id' => $product['item']['id']])}}">Remove Order</a>
+                            </div>
                         </div>
-                      </div>
-                    </td>
-                    <td class="cart__price">$ 170.0</td>
-                    <td class="cart__quantity">
-                      <div class="pro-qty">
-                        <input type="text" value="1" />
-                      </div>
-                    </td>
-                    <td class="cart__total">$ 170.0</td>
-                    <td class="cart__close">
-                      <span class="icon_close"></span>
                     </td>
                   </tr>
-                  <tr>
-                    <td class="cart__product__item">
-                      <img src="img/shop-cart/cp-3.jpg" alt="" />
-                      <div class="cart__product__item__title">
-                        <h6>Black jean</h6>
-                        <div class="rating">
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="cart__price">$ 85.0</td>
-                    <td class="cart__quantity">
-                      <div class="pro-qty">
-                        <input type="text" value="1" />
-                      </div>
-                    </td>
-                    <td class="cart__total">$ 170.0</td>
-                    <td class="cart__close">
-                      <span class="icon_close"></span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="cart__product__item">
-                      <img src="img/shop-cart/cp-4.jpg" alt="" />
-                      <div class="cart__product__item__title">
-                        <h6>Cotton Shirt</h6>
-                        <div class="rating">
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="cart__price">$ 55.0</td>
-                    <td class="cart__quantity">
-                      <div class="pro-qty">
-                        <input type="text" value="1" />
-                      </div>
-                    </td>
-                    <td class="cart__total">$ 110.0</td>
-                    <td class="cart__close">
-                      <span class="icon_close"></span>
-                    </td>
-                  </tr>
-                </tbody> --}}
+                    </cart>
+                    @endforeach
+                </tbody>
 
               </table>
             </div>
@@ -182,39 +116,34 @@
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="cart__btn">
-              <a href="#">Continue Shopping</a>
-            </div>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-6">
-            <div class="cart__btn update__btn">
-              <a href="#"><span class="icon_loading"></span> Update cart</a>
+              <a href="{{url('/home')}}">Continue Shopping</a>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-6">
-            <div class="discount__content">
-              <h6>Discount codes</h6>
-              <form action="#">
-                <input type="text" placeholder="Enter your coupon code" />
-                <button type="submit" class="site-btn">Apply</button>
-              </form>
-            </div>
-          </div>
           <div class="col-lg-4 offset-lg-2">
             <div class="cart__total__procced">
               <h6>Cart total</h6>
               <ul>
-                <li>Subtotal <span>$ 750.0</span></li>
-                <li>Total <span>$ 750.0</span></li>
+                <li>Subtotal <span> RM {{$totalPrice}}</span></li>
+                <li>Total <span> RM {{$totalPrice}}</span></li>
               </ul>
-              <a href="/checkout" class="primary-btn"
+              <a href="{{route('customer.checkout')}}" class="primary-btn"
                 >Proceed to checkout</a
               >
             </div>
           </div>
         </div>
       </div>
+      @else
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="cart__btn">
+            <a href="{{url('/home')}}">Continue Shopping</a>
+          </div>
+        </div>
+      </div>
+      @endif
     </section>
     <!-- Shop Cart Section End -->
 

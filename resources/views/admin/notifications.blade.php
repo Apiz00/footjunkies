@@ -3,81 +3,46 @@
 @section('content')
 
 <div class="main-panel">
-    <!-- Navbar -->
-    <nav
-      class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top"
-    >
-      <div class="container-fluid">
-        <div class="navbar-wrapper">
-          <a class="navbar-brand" href="javascript:;">Notifications</a>
-        </div>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          aria-controls="navigation-index"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="sr-only">Toggle navigation</span>
-          <span class="navbar-toggler-icon icon-bar"></span>
-          <span class="navbar-toggler-icon icon-bar"></span>
-          <span class="navbar-toggler-icon icon-bar"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end">
-          <form class="navbar-form">
-            <div class="input-group no-border">
-              <input
-                type="text"
-                value=""
-                class="form-control"
-                placeholder="Search..."
-              />
-              <button
-                type="submit"
-                class="btn btn-white btn-round btn-just-icon"
-              >
-                <i class="material-icons">search</i>
-                <div class="ripple-container"></div>
-              </button>
+     <!-- Navbar -->
+     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-wrapper">
+                <a class="navbar-brand" href="javascript:;">Notifications</a>
             </div>
-          </form>
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="dashboard.html">
-                <i class="material-icons">dashboard</i>
-                <p class="d-lg-none d-md-block">Stats</p>
-              </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link"
-                href="javascript:;"
-                id="navbarDropdownProfile"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <i class="material-icons">person</i>
-                <p class="d-lg-none d-md-block">Account</p>
-              </a>
-              <div
-                class="dropdown-menu dropdown-menu-right"
-                aria-labelledby="navbarDropdownProfile"
-              >
-              <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-              document.getElementById('logout-form').submit();">
-{{ __('Logout') }}
-</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon icon-bar"></span>
+                <span class="navbar-toggler-icon icon-bar"></span>
+                <span class="navbar-toggler-icon icon-bar"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end">
+                <ul class="navbar-nav">
 
-<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-@csrf
-</form>
-              </div>
-            </li>
-          </ul>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">person</i>
+                            <p class="d-lg-none d-md-block">Account</p>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                         onclick="event.preventDefault();
+                                                       document.getElementById('logout-form').submit();">
+                                          {{ __('Logout') }}
+                                      </a>
+
+                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                          @csrf
+                                      </form>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
     <!-- End Navbar -->
     <div class="content">
@@ -202,73 +167,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6 ml-auto mr-auto text-center">
-                  <h4 class="card-title">
-                    Notifications Places
-                    <p class="category">Click to view notifications</p>
-                  </h4>
-                </div>
+
               </div>
-              <div class="row">
-                <div class="col-lg-8 col-md-10 ml-auto mr-auto">
-                  <div class="row">
-                    <div class="col-md-4">
-                      <button
-                        class="btn btn-primary btn-block"
-                        onclick="md.showNotification('top','left')"
-                      >
-                        Top Left
-                      </button>
-                    </div>
-                    <div class="col-md-4">
-                      <button
-                        class="btn btn-primary btn-block"
-                        onclick="md.showNotification('top','center')"
-                      >
-                        Top Center
-                      </button>
-                    </div>
-                    <div class="col-md-4">
-                      <button
-                        class="btn btn-primary btn-block"
-                        onclick="md.showNotification('top','right')"
-                      >
-                        Top Right
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-8 col-md-10 ml-auto mr-auto">
-                  <div class="row">
-                    <div class="col-md-4">
-                      <button
-                        class="btn btn-primary btn-block"
-                        onclick="md.showNotification('bottom','left')"
-                      >
-                        Bottom Left
-                      </button>
-                    </div>
-                    <div class="col-md-4">
-                      <button
-                        class="btn btn-primary btn-block"
-                        onclick="md.showNotification('bottom','center')"
-                      >
-                        Bottom Center
-                      </button>
-                    </div>
-                    <div class="col-md-4">
-                      <button
-                        class="btn btn-primary btn-block"
-                        onclick="md.showNotification('bottom','right')"
-                      >
-                        Bottom Right
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>

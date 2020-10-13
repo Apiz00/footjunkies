@@ -5,14 +5,14 @@
     <div class="login-wrap text-center mb-5">
 
         <div class="login-html">
-            <input id="tab-1" type="radio" name="tab" class="sign-in" checked /><label for="tab-1" class="tab">Sign
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked /><label for="tab-1" class="tab text-center">Sign
                 In</label>
             <input id="tab-2" type="radio" name="tab" class="sign-up" />
             <label for="tab-2" class="tab"></label>
             <div class="login-form">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
-                    <div class="sign-in-htm">
+                    <div class="sign-in-htm mt-5">
                         <div class="group">
                             <label for="user" class="label">Email</label>
                             <input id="email" type="email" class="input @error('email') is-invalid @enderror" name="email"
@@ -34,18 +34,12 @@
                             </span>
                             @enderror
                         </div>
-                        <div class="group">
-                            <input id="check" type="checkbox" class="check" checked />
-                            {{-- <label for="check"><span class="icon"></span> Keep me Signed in</label> --}}
-                            <label class="form-check-label" for="remember">
-                                <span class="icon mr-1 mt-1"></span>{{ __('Remember Me') }}
-                            </label>
-                        </div>
+
                         <div class="group">
                             <input type="submit" class="button" value="Sign In" />
                         </div>
                         <div class="hr"></div>
-                        <div class="foot-lnk">
+                        {{-- <div class="foot-lnk">
                             @if (Route::has('password.request'))
                             <a class="btn btn-link" style="color: #000
                             " href="{{ route('password.request') }}">
@@ -53,7 +47,7 @@
                             </a>
                         @endif
 
-                        </div>
+                        </div> --}}
                     </div>
                 </form>
             </div>

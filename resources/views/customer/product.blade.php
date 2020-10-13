@@ -100,9 +100,9 @@
                       </div>
                     </div> --}}
                     <ul>
-                    <button type="submit" class="cart-btn border-none"
-                      ><span class="icon_bag_alt"></span> Buy Now</button
-                    >
+                        <a href="{{route('customer.checkout')}}"><button type="submit" class="cart-btn border-none"
+                        ><span class="icon_bag_alt"></span>Buy Now</button
+                      ></a>
                     <li>
                         <a href="{{ route('customer.addToCart', ['id' => $product->id])}}"><span class="icon_bag_alt"></span></a>
                       </li>
@@ -136,22 +136,9 @@
                   <li>
                     <span>Available size:</span>
                     <div class="size__btn">
-                      <label for="xs-btn" class="active">
-                        <input type="radio" id="xs-btn" />
-                        xs
-                      </label>
-                      <label for="s-btn">
-                        <input type="radio" id="s-btn" />
-                        s
-                      </label>
-                      <label for="m-btn">
-                        <input type="radio" id="m-btn" />
-                        m
-                      </label>
-                      <label for="l-btn">
-                        <input type="radio" id="l-btn" />
-                        l
-                      </label>
+                        <label for="stockin" >
+                            {{$product->product_size}}
+                                  <input type="checkbox" id="stockin" />
                     </div>
                   </li>
 
